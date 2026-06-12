@@ -34,31 +34,31 @@
             background-image: radial-gradient(circle at 50% 0%, #1a1a2e 0%, #050505 70%);
         }
         .gradient-text {
-            background: linear-gradient(to right, #3b82f6, #a855f7);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: #3b82f6;
+            font-weight: 900;
         }
         .glass-card {
-            background: rgba(30, 41, 59, 0.7);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(30, 41, 59, 0.5);
+            backdrop-filter: none;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
         }
         .project-card:hover .project-image {
-            transform: scale(1.05);
+            transform: scale(1.02);
         }
     </style>
 </head>
-<body class="antialiased selection:bg-neon-purple selection:text-white">
+<body class="antialiased selection:bg-blue-500 selection:text-white">
 
     <!-- Navigation -->
     <nav class="fixed w-full z-50 top-0 left-0 border-b border-white/10 bg-black/80 backdrop-blur-md">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" class="text-xl font-bold font-mono tracking-tighter">ANTHONY<span class="text-neon-blue">.DEV</span></a>
+            <a href="#" class="text-xl font-bold font-mono tracking-tighter">ANTHONY<span class="text-blue-400">.DEV</span></a>
             <div class="hidden md:flex space-x-8 text-sm font-semibold tracking-wide">
-                <a href="#about" class="hover:text-neon-blue transition">ABOUT</a>
-                <a href="#work" class="hover:text-neon-blue transition">WORK</a>
-                <a href="#experience" class="hover:text-neon-blue transition">EXPERIENCE</a>
-                <a href="#contact" class="hover:text-neon-blue transition">CONTACT</a>
+                <a href="#about" class="hover:text-blue-400 transition">ABOUT</a>
+                <a href="#work" class="hover:text-blue-400 transition">WORK</a>
+                <a href="#experience" class="hover:text-blue-400 transition">EXPERIENCE</a>
+                <a href="#contact" class="hover:text-blue-400 transition">CONTACT</a>
             </div>
             <a href="https://www.linkedin.com/in/anthony-kpr" target="_blank" class="bg-white/10 hover:bg-white/20 px-4 py-2 rounded-full text-sm font-bold transition flex items-center gap-2">
                 <span>LinkedIn</span>
@@ -70,24 +70,24 @@
     <!-- Hero Section -->
     <section class="min-h-screen flex items-center justify-center pt-20 relative overflow-hidden">
         <!-- Background Elements -->
-        <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-600/20 rounded-full blur-3xl -z-10 animate-pulse"></div>
-        <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-600/20 rounded-full blur-3xl -z-10 animate-pulse" style="animation-delay: 1s;"></div>
+        <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl -z-10" style="opacity: 0.5;"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-600/10 rounded-full blur-3xl -z-10" style="opacity: 0.5;"></div>
 
         <div class="container mx-auto px-6 text-center z-10">
-            <p class="text-neon-blue font-mono mb-4 tracking-widest text-sm uppercase">Berlin, Germany</p>
+            <p class="text-blue-400 font-mono mb-4 tracking-widest text-sm uppercase">Berlin, Germany</p>
             <h1 class="text-6xl md:text-8xl font-black mb-6 leading-tight">
                 ANTHONY EGE <br>
-                <span class="gradient-text">KOPRI</span>
+                <span class="text-blue-400 font-black">KOPRI</span>
             </h1>
             <p class="text-xl md:text-2xl text-gray-400 max-w-2xl mx-auto mb-10 leading-relaxed">
-                Senior Unity & C# Developer. AI Researcher. <br>
-                Specializing in <span class="text-white font-bold">scalable game pipelines</span>, <span class="text-white font-bold">rapid prototyping</span>, and creating tools that empower designers.
+                Senior Unity & C# Developer. Frontend Engineer (React + Vite). <br>
+                Specializing in <span class="text-white font-bold">game systems & tools</span>, <span class="text-white font-bold">modern web frontends</span>, and <span class="text-white font-bold">AI-assisted development</span>.
             </p>
             <div class="flex flex-col md:flex-row justify-center gap-4">
-                <a href="#work" class="bg-neon-blue hover:bg-blue-600 text-white px-8 py-4 rounded-lg font-bold text-lg transition shadow-[0_0_20px_rgba(59,130,246,0.5)]">
+                <a href="#work" class="bg-blue-500 hover:bg-blue-600 text-white px-8 py-4 rounded-lg font-bold text-lg transition shadow-md">
                     View Portfolio
                 </a>
-                <a href="mailto:anthonyegekopri@gmail.com" class="glass-card hover:bg-white/10 text-white px-8 py-4 rounded-lg font-bold text-lg transition border border-white/20">
+                <a href="mailto:anthonyegekopri@gmail.com" class="bg-gray-800 hover:bg-gray-700 text-white px-8 py-4 rounded-lg font-bold text-lg transition border border-gray-600">
                     Get in Touch
                 </a>
             </div>
@@ -96,9 +96,9 @@
             <div class="mt-16 flex flex-wrap justify-center gap-3 opacity-70">
                 <span class="px-4 py-2 border border-white/10 rounded-full text-sm font-mono text-gray-300">Unity 3D</span>
                 <span class="px-4 py-2 border border-white/10 rounded-full text-sm font-mono text-gray-300">C#</span>
+                <span class="px-4 py-2 border border-white/10 rounded-full text-sm font-mono text-gray-300">React + Vite</span>
                 <span class="px-4 py-2 border border-white/10 rounded-full text-sm font-mono text-gray-300">AI Integration</span>
-                <span class="px-4 py-2 border border-white/10 rounded-full text-sm font-mono text-gray-300">Tool Development</span>
-                <span class="px-4 py-2 border border-white/10 rounded-full text-sm font-mono text-gray-300">Zenject</span>
+                <span class="px-4 py-2 border border-white/10 rounded-full text-sm font-mono text-gray-300">Editor Tooling</span>
             </div>
         </div>
     </section>
@@ -111,12 +111,7 @@
                     <h2 class="text-4xl md:text-5xl font-bold mb-2">Selected Works</h2>
                     <p class="text-gray-400">Shipped titles and prototyping highlights</p>
                 </div>
-                <div class="hidden md:block w-32 h-1 bg-gradient-to-r from-neon-blue to-neon-purple rounded-full"></div>
-            </div>
-
-            <!-- Project Grid: Content injected via JS below -->
-            <div id="project-container" class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Javascript will populate this -->
+                <div class="hidden md:block w-32 h-1 bg-blue-500 rounded-full"></div>
             </div>
         </div>
     </section>
@@ -129,65 +124,82 @@
                 <!-- Experience Column -->
                 <div class="lg:col-span-2">
                     <h2 class="text-3xl font-bold mb-8 flex items-center gap-3">
-                        <span class="text-neon-purple">#</span> Experience
+                        <span class="text-blue-400">#</span> Experience
                     </h2>
                     
                     <div class="space-y-12 border-l-2 border-white/10 pl-8 ml-4 relative">
                         
-                        <!-- Item 1 -->
+                        <!-- Item 1: Familiara -->
                         <div class="relative">
-                            <div class="absolute -left-[41px] top-1 h-5 w-5 rounded-full bg-neon-purple border-4 border-black"></div>
+                            <div class="absolute -left-[41px] top-1 h-5 w-5 rounded-full bg-blue-500 border-4 border-black"></div>
                             <div class="flex flex-col sm:flex-row sm:items-baseline justify-between mb-2">
-                                <h3 class="text-2xl font-bold text-white">Freelance Software Developer</h3>
-                                <span class="text-sm font-mono text-gray-400">Sep 2025 - Present</span>
+                                <h3 class="text-2xl font-bold text-white">Frontend & Automation Developer</h3>
+                                <span class="text-sm font-mono text-gray-400">May 2026 - Present</span>
                             </div>
-                            <p class="text-neon-blue text-sm mb-2">Berlin, Germany</p>
-                            <p class="text-gray-400 leading-relaxed">
-                                Developing custom software solutions and game prototypes.
-                            </p>
-                        </div>
-
-                        <!-- Item 2 -->
-                        <div class="relative">
-                            <div class="absolute -left-[41px] top-1 h-5 w-5 rounded-full bg-gray-700 border-4 border-black"></div>
-                            <div class="flex flex-col sm:flex-row sm:items-baseline justify-between mb-2">
-                                <h3 class="text-2xl font-bold text-white">Co-Founder / Game Developer</h3>
-                                <span class="text-sm font-mono text-gray-400">Apr 2025 - Sep 2025</span>
-                            </div>
-                            <p class="text-neon-blue text-sm mb-2">Rocket Tuna Games</p>
+                            <p class="text-blue-400 text-sm mb-2">Familiara GmbH</p>
                             <ul class="list-disc list-inside text-gray-400 space-y-2 mt-2">
-                                <li>Built custom Unity plugins to accelerate level design workflows.</li>
-                                <li>Created standardized pipelines for rapid prototyping.</li>
-                                <li>Managed technical implementation and reusable architecture.</li>
+                                <li>Modernizing company website from WordPress to React + Vite for improved performance and maintainability.</li>
+                                <li>Designing automated form pipeline to merge multiple form flows and support backend system updates.</li>
+                                <li>Assisting with AI project using LLM-assisted development tools to accelerate implementation.</li>
                             </ul>
                         </div>
 
-                        <!-- Item 3 -->
+                        <!-- Item 2: Rocket Tuna Games -->
+                        <div class="relative">
+                            <div class="absolute -left-[41px] top-1 h-5 w-5 rounded-full bg-gray-700 border-4 border-black"></div>
+                            <div class="flex flex-col sm:flex-row sm:items-baseline justify-between mb-2">
+                                <h3 class="text-2xl font-bold text-white">Co-Founder & Senior Unity Developer</h3>
+                                <span class="text-sm font-mono text-gray-400">Apr 2025 - Sep 2025</span>
+                            </div>
+                            <p class="text-blue-400 text-sm mb-2">Rocket Tuna Games</p>
+                            <ul class="list-disc list-inside text-gray-400 space-y-2 mt-2">
+                                <li>Built Unity Editor tools and internal plugins to streamline level design, UI workflows, and fast iteration.</li>
+                                <li>Created reusable templates and automated repetitive tasks to accelerate prototyping.</li>
+                                <li>Managed technical implementation and standardized architecture for small team productivity.</li>
+                            </ul>
+                        </div>
+
+                        <!-- Item 3: NanoTribe -->
                         <div class="relative">
                             <div class="absolute -left-[41px] top-1 h-5 w-5 rounded-full bg-gray-700 border-4 border-black"></div>
                             <div class="flex flex-col sm:flex-row sm:items-baseline justify-between mb-2">
                                 <h3 class="text-2xl font-bold text-white">Game Developer</h3>
                                 <span class="text-sm font-mono text-gray-400">Feb 2021 - Mar 2025</span>
                             </div>
-                            <p class="text-neon-blue text-sm mb-2">NanoTribe GmbH</p>
+                            <p class="text-blue-400 text-sm mb-2">NanoTribe GmbH</p>
                             <p class="text-gray-400 mb-2 italic">Contributed to: Cashier 3D, Arrow Fest, Bus Jam</p>
                             <ul class="list-disc list-inside text-gray-400 space-y-2">
-                                <li>Designed internal tools and Unity Editor extensions to speed up workflows.</li>
-                                <li>Refactored legacy codebases for stability and performance.</li>
-                                <li>Automated parts of the content creation pipeline.</li>
+                                <li>Designed internal tools and Unity Editor extensions to speed up designer workflows.</li>
+                                <li>Refactored legacy codebases for stability, performance, and maintainability.</li>
+                                <li>Implemented core gameplay systems and automated parts of the content creation pipeline.</li>
                             </ul>
                         </div>
 
-                        <!-- Item 4 -->
+                        <!-- Item 4: ValhallaVerse -->
                         <div class="relative">
                             <div class="absolute -left-[41px] top-1 h-5 w-5 rounded-full bg-gray-700 border-4 border-black"></div>
                             <div class="flex flex-col sm:flex-row sm:items-baseline justify-between mb-2">
-                                <h3 class="text-2xl font-bold text-white">Junior Programmer</h3>
+                                <h3 class="text-2xl font-bold text-white">Freelance Game Developer</h3>
+                                <span class="text-sm font-mono text-gray-400">Dec 2021 - Nov 2022</span>
+                            </div>
+                            <p class="text-blue-400 text-sm mb-2">ValhallaVerse</p>
+                            <ul class="list-disc list-inside text-gray-400 space-y-2 mt-2">
+                                <li>Worked on Unity game development tasks involving WebGL, multiplayer gameplay, and Web3 requirements.</li>
+                                <li>Gained experience with Unity Multiplayer, Mirror, and Photon libraries.</li>
+                                <li>Built and adjusted custom Unity tools and workflows to support faster development and testing.</li>
+                            </ul>
+                        </div>
+
+                        <!-- Item 5: Besh Bilişim -->
+                        <div class="relative">
+                            <div class="absolute -left-[41px] top-1 h-5 w-5 rounded-full bg-gray-700 border-4 border-black"></div>
+                            <div class="flex flex-col sm:flex-row sm:items-baseline justify-between mb-2">
+                                <h3 class="text-2xl font-bold text-white">Junior Full-Stack Programmer</h3>
                                 <span class="text-sm font-mono text-gray-400">Aug 2019 - Aug 2020</span>
                             </div>
-                            <p class="text-neon-blue text-sm mb-2">Besh Bilişim</p>
+                            <p class="text-blue-400 text-sm mb-2">Besh Bilişim Donanim ve Internet Hizmetleri</p>
                             <p class="text-gray-400">
-                                Developed accessibility hardware/software for visually impaired users. Built custom file subsystems in Linux and Java.
+                                Delivered hardware-related prototype as sole developer. Built internal proprietary file explorer/reader/editor tool for accessibility.
                             </p>
                         </div>
                     </div>
@@ -196,38 +208,55 @@
                 <!-- Skills Column -->
                 <div>
                     <h2 class="text-3xl font-bold mb-8 flex items-center gap-3">
-                        <span class="text-neon-blue">#</span> Skills
+                        <span class="text-blue-400">#</span> Skills
                     </h2>
                     
-                    <div class="glass-card p-6 rounded-2xl mb-8">
-                        <h4 class="text-lg font-bold text-white mb-4 border-b border-white/10 pb-2">Core Tech</h4>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="px-3 py-1 bg-blue-600/20 text-blue-300 rounded text-sm">Unity 3D</span>
-                            <span class="px-3 py-1 bg-blue-600/20 text-blue-300 rounded text-sm">C#</span>
-                            <span class="px-3 py-1 bg-blue-600/20 text-blue-300 rounded text-sm">Java</span>
-                            <span class="px-3 py-1 bg-blue-600/20 text-blue-300 rounded text-sm">Python</span>
-                            <span class="px-3 py-1 bg-blue-600/20 text-blue-300 rounded text-sm">Git</span>
+                    <div>
+                        <div class="glass-card p-6 rounded-2xl mb-8">
+                            <h4 class="text-lg font-bold text-white mb-4 border-b border-white/10 pb-2">Core Tech</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 bg-blue-600/20 text-blue-300 rounded text-sm">Unity 3D</span>
+                                <span class="px-3 py-1 bg-blue-600/20 text-blue-300 rounded text-sm">C#</span>
+                                <span class="px-3 py-1 bg-blue-600/20 text-blue-300 rounded text-sm">React</span>
+                                <span class="px-3 py-1 bg-blue-600/20 text-blue-300 rounded text-sm">JavaScript</span>
+                                <span class="px-3 py-1 bg-blue-600/20 text-blue-300 rounded text-sm">Python</span>
+                                <span class="px-3 py-1 bg-blue-600/20 text-blue-300 rounded text-sm">Java</span>
+                                <span class="px-3 py-1 bg-blue-600/20 text-blue-300 rounded text-sm">Git</span>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="glass-card p-6 rounded-2xl mb-8">
-                        <h4 class="text-lg font-bold text-white mb-4 border-b border-white/10 pb-2">Unity Specialization</h4>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="px-3 py-1 bg-purple-600/20 text-purple-300 rounded text-sm">Editor Scripting</span>
-                            <span class="px-3 py-1 bg-purple-600/20 text-purple-300 rounded text-sm">Zenject</span>
-                            <span class="px-3 py-1 bg-purple-600/20 text-purple-300 rounded text-sm">UniRx</span>
-                            <span class="px-3 py-1 bg-purple-600/20 text-purple-300 rounded text-sm">Addressables</span>
-                            <span class="px-3 py-1 bg-purple-600/20 text-purple-300 rounded text-sm">CI/CD Automation</span>
+                        <div class="glass-card p-6 rounded-2xl mb-8">
+                            <h4 class="text-lg font-bold text-white mb-4 border-b border-white/10 pb-2">Frontend & Web</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 bg-purple-600/20 text-purple-300 rounded text-sm">React</span>
+                                <span class="px-3 py-1 bg-purple-600/20 text-purple-300 rounded text-sm">Vite</span>
+                                <span class="px-3 py-1 bg-purple-600/20 text-purple-300 rounded text-sm">HTML/CSS</span>
+                                <span class="px-3 py-1 bg-purple-600/20 text-purple-300 rounded text-sm">Tailwind</span>
+                                <span class="px-3 py-1 bg-purple-600/20 text-purple-300 rounded text-sm">Salesforce</span>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="glass-card p-6 rounded-2xl">
-                        <h4 class="text-lg font-bold text-white mb-4 border-b border-white/10 pb-2">Languages</h4>
-                        <ul class="space-y-2 text-gray-400 text-sm">
-                            <li class="flex justify-between"><span>Turkish</span> <span class="text-white">Native</span></li>
-                            <li class="flex justify-between"><span>English</span> <span class="text-white">Bilingual</span></li>
-                            <li class="flex justify-between"><span>German</span> <span class="text-white">Elementary</span></li>
-                        </ul>
+                        <div class="glass-card p-6 rounded-2xl mb-8">
+                            <h4 class="text-lg font-bold text-white mb-4 border-b border-white/10 pb-2">Game Development</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 bg-green-600/20 text-green-300 rounded text-sm">Editor Scripting</span>
+                                <span class="px-3 py-1 bg-green-600/20 text-green-300 rounded text-sm">Zenject</span>
+                                <span class="px-3 py-1 bg-green-600/20 text-green-300 rounded text-sm">UniRx</span>
+                                <span class="px-3 py-1 bg-green-600/20 text-green-300 rounded text-sm">Addressables</span>
+                                <span class="px-3 py-1 bg-green-600/20 text-green-300 rounded text-sm">CI/CD</span>
+                                <span class="px-3 py-1 bg-green-600/20 text-green-300 rounded text-sm">Multiplayer</span>
+                                <span class="px-3 py-1 bg-green-600/20 text-green-300 rounded text-sm">Web3</span>
+                            </div>
+                        </div>
+
+                        <div class="glass-card p-6 rounded-2xl">
+                            <h4 class="text-lg font-bold text-white mb-4 border-b border-white/10 pb-2">Languages</h4>
+                            <ul class="space-y-2 text-gray-400 text-sm">
+                                <li class="flex justify-between"><span>Turkish</span> <span class="text-white">Native</span></li>
+                                <li class="flex justify-between"><span>English</span> <span class="text-white">Bilingual</span></li>
+                                <li class="flex justify-between"><span>German</span> <span class="text-white">Elementary</span></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
 
@@ -243,7 +272,7 @@
             <p class="text-xl text-gray-400 mb-12 max-w-2xl mx-auto">
                 I'm currently open to opportunities in Unity Development, Technical Programming, and Tools Development.
             </p>
-            <a href="mailto:anthonyegekopri@gmail.com" class="inline-flex items-center gap-3 bg-white text-black px-10 py-5 rounded-full font-bold text-xl hover:bg-gray-200 transition transform hover:scale-105">
+            <a href="mailto:anthonyegekopri@gmail.com" class="inline-flex items-center gap-3 bg-white text-black px-10 py-5 rounded-full font-bold text-xl hover:bg-gray-200 transition">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
                 anthonyegekopri@gmail.com
             </a>
@@ -336,10 +365,10 @@
                 }
 
                 // Generate tags HTML
-                const tags = project.tags.map(tag => `<span class="text-xs font-mono text-neon-blue border border-neon-blue/30 px-2 py-1 rounded">${tag}</span>`).join('');
+                const tags = project.tags.map(tag => `<span class="text-xs font-mono text-blue-300 border border-blue-400/30 px-2 py-1 rounded">${tag}</span>`).join('');
 
                 return `
-                <div class="project-card group relative rounded-2xl overflow-hidden glass-card transition-all duration-300 hover:shadow-[0_0_30px_rgba(59,130,246,0.3)] hover:-translate-y-2">
+                <div class="project-card group relative rounded-2xl overflow-hidden glass-card transition-all duration-300 hover:shadow-md hover:-translate-y-2">
                     <div class="relative h-64 overflow-hidden">
                         <img src="${project.image}" alt="${project.title}" class="project-image w-full h-full object-cover transition-transform duration-500">
                         <div class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-80"></div>
@@ -350,7 +379,7 @@
                     
                     <div class="p-8">
                         <div class="flex justify-between items-start mb-4">
-                            <h3 class="text-3xl font-bold group-hover:text-neon-blue transition cursor-pointer">
+                            <h3 class="text-3xl font-bold group-hover:text-blue-400 transition cursor-pointer">
                                 <a href="${project.ios || project.android || '#'}" target="_blank">${project.title}</a>
                             </h3>
                         </div>
