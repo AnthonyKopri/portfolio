@@ -1,467 +1,316 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anthony Ege Kopri | Game Developer</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <meta name="description" content="Choose the software engineering or game development portfolio for Anthony Ege Kopri, a Berlin-based software engineer and Unity developer.">
+    <meta name="robots" content="noindex, follow">
+    <meta name="theme-color" content="#f7f9fc">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230b57d0'/%3E%3Ctext x='32' y='39' text-anchor='middle' font-family='Arial' font-size='20' font-weight='700' fill='white'%3EAK%3C/text%3E%3C/svg%3E">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700;900&family=Space+Grotesk:wght@300;400;600;700&display=swap" rel="stylesheet">
-    
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Outfit', 'sans-serif'],
-                        mono: ['Space Grotesk', 'monospace'],
-                    },
-                    colors: {
-                        'neon-purple': '#a855f7',
-                        'neon-blue': '#3b82f6',
-                        'dark-bg': '#0f172a',
-                        'card-bg': '#1e293b',
-                    }
-                }
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>Anthony Ege Kopri | Portfolio</title>
+
+    <style>
+        :root {
+            color-scheme: light;
+            --primary: #0b57d0;
+            --primary-dark: #0842a0;
+            --primary-container: #dbe8ff;
+            --ink: #172033;
+            --ink-soft: #526078;
+            --surface: #ffffff;
+            --surface-alt: #f5f7fb;
+            --outline: #d8e0eb;
+            --navy: #13233d;
+            --shadow: 0 14px 40px rgba(21, 36, 60, 0.11);
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            min-width: 320px;
+            background: var(--surface-alt);
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background:
+                radial-gradient(circle at 82% 10%, rgba(11, 87, 208, 0.10), transparent 28%),
+                linear-gradient(180deg, #f4f7fc 0%, #ffffff 86%);
+            color: var(--ink);
+            font-family: "Roboto", "Segoe UI", Arial, sans-serif;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        :focus-visible {
+            outline: 3px solid rgba(11, 87, 208, 0.38);
+            outline-offset: 4px;
+        }
+
+        .page {
+            display: grid;
+            width: min(calc(100% - 40px), 960px);
+            min-height: 100vh;
+            margin-inline: auto;
+            align-content: center;
+            padding-block: 64px;
+        }
+
+        .identity {
+            max-width: 720px;
+            margin-bottom: 34px;
+        }
+
+        .monogram {
+            display: grid;
+            width: 52px;
+            height: 52px;
+            margin-bottom: 24px;
+            place-items: center;
+            border-radius: 16px;
+            background: var(--primary);
+            color: #ffffff;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            box-shadow: 0 5px 16px rgba(11, 87, 208, 0.24);
+        }
+
+        .location {
+            margin: 0 0 10px;
+            color: var(--primary);
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 0.07em;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            margin: 0 0 16px;
+            font-size: clamp(40px, 7vw, 64px);
+            line-height: 1.08;
+            letter-spacing: -0.035em;
+        }
+
+        .intro {
+            max-width: 680px;
+            margin: 0;
+            color: var(--ink-soft);
+            font-size: clamp(17px, 2.2vw, 20px);
+        }
+
+        .welcome {
+            display: none;
+            margin: 20px 0 0;
+            padding: 10px 14px;
+            border: 1px solid #c5d7f3;
+            border-radius: 12px;
+            background: #eef5ff;
+            color: #25466f;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .welcome.visible {
+            display: inline-block;
+        }
+
+        .chooser {
+            padding: clamp(24px, 5vw, 42px);
+            border: 1px solid var(--outline);
+            border-radius: 24px;
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: var(--shadow);
+        }
+
+        .chooser > p {
+            margin: 0 0 24px;
+            color: var(--ink-soft);
+            font-size: 15px;
+        }
+
+        .choices {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px;
+        }
+
+        .choice {
+            display: flex;
+            min-height: 220px;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 26px;
+            border: 1px solid var(--outline);
+            border-radius: 18px;
+            background: var(--surface-alt);
+            transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+        }
+
+        .choice:hover {
+            transform: translateY(-2px);
+            border-color: #aebfd8;
+            box-shadow: 0 8px 24px rgba(21, 36, 60, 0.09);
+        }
+
+        .choice-label {
+            display: inline-flex;
+            margin-bottom: 18px;
+            padding: 5px 9px;
+            border-radius: 999px;
+            background: var(--primary-container);
+            color: #123563;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .choice h2 {
+            margin: 0 0 10px;
+            font-size: 24px;
+            line-height: 1.25;
+        }
+
+        .choice p {
+            margin: 0 0 22px;
+            color: var(--ink-soft);
+            font-size: 14px;
+        }
+
+        .choice-action {
+            display: inline-flex;
+            min-height: 42px;
+            align-items: center;
+            gap: 8px;
+            margin-top: auto;
+            padding: 0 17px;
+            border-radius: 999px;
+            background: var(--primary);
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .choice:hover .choice-action {
+            background: var(--primary-dark);
+        }
+
+        .choice-action svg {
+            width: 17px;
+            height: 17px;
+        }
+
+        .profile-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px 22px;
+            margin-top: 26px;
+            color: #58667c;
+            font-size: 14px;
+        }
+
+        .profile-links a:hover {
+            color: var(--primary);
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        @media (max-width: 700px) {
+            .page {
+                width: min(calc(100% - 28px), 960px);
+                align-content: start;
+                padding-block: 38px;
+            }
+
+            .identity {
+                margin-bottom: 26px;
+            }
+
+            .choices {
+                grid-template-columns: 1fr;
+            }
+
+            .choice {
+                min-height: 200px;
             }
         }
-    </script>
-    <style>
-        body {
-            background-color: #050505;
-            color: #ffffff;
-            background-image: radial-gradient(circle at 50% 0%, #1a1a2e 0%, #050505 70%);
-        }
-        .gradient-text {
-            color: #3b82f6;
-            font-weight: 900;
-        }
-        .glass-card {
-            background: rgba(30, 41, 59, 0.5);
-            backdrop-filter: none;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-        }
-        .project-card:hover .project-image {
-            transform: scale(1.02);
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                transition-duration: 0.01ms !important;
+            }
         }
     </style>
 </head>
-<body class="antialiased selection:bg-blue-500 selection:text-white">
 
-    <!-- Navigation -->
-    <nav class="fixed w-full z-50 top-0 left-0 border-b border-white/10 bg-black/80 backdrop-blur-md">
-        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" class="text-xl font-bold font-mono tracking-tighter">ANTHONY<span class="text-blue-400">.DEV</span></a>
-            <div class="hidden md:flex space-x-8 text-sm font-semibold tracking-wide">
-                <a href="#about" class="hover:text-blue-400 transition">ABOUT</a>
-                <a href="#work" class="hover:text-blue-400 transition">WORK</a>
-                <a href="#experience" class="hover:text-blue-400 transition">EXPERIENCE</a>
-                <a href="#contact" class="hover:text-blue-400 transition">CONTACT</a>
-            </div>
-            <a href="https://www.linkedin.com/in/anthony-kpr" target="_blank" class="bg-white/10 hover:bg-white/20 px-4 py-2 rounded-full text-sm font-bold transition flex items-center gap-2">
-                <span>LinkedIn</span>
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-            </a>
-        </div>
-    </nav>
+<body>
+    <main class="page">
+        <section class="identity" aria-labelledby="page-title">
+            <div class="monogram" aria-hidden="true">AK</div>
+            <p class="location">Berlin, Germany</p>
+            <h1 id="page-title">Anthony Ege Kopri</h1>
+            <p class="intro">Software engineer and Unity game developer with 5+ years of experience building developer tools, applications, gameplay systems, and shipped mobile products.</p>
+            <p id="company-welcome" class="welcome" aria-live="polite"></p>
+        </section>
 
-    <!-- Company Greeting (Shown only when ?company=... is provided) -->
-    <section id="company-greeting" class="hidden pt-24 pb-2">
-        <div class="container mx-auto px-6">
-            <div class="glass-card rounded-xl px-5 py-4 border border-blue-400/30">
-                <p id="company-greeting-text" class="text-sm md:text-base text-blue-100 font-medium"></p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Hero Section -->
-    <section class="min-h-screen flex items-center justify-center pt-20 relative overflow-hidden">
-        <!-- Background Elements -->
-        <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl -z-10" style="opacity: 0.5;"></div>
-        <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-600/10 rounded-full blur-3xl -z-10" style="opacity: 0.5;"></div>
-
-        <div class="container mx-auto px-6 text-center z-10">
-            <p class="text-blue-400 font-mono mb-4 tracking-widest text-sm uppercase">Berlin, Germany</p>
-            <h1 class="text-6xl md:text-8xl font-black mb-6 leading-tight">
-                ANTHONY EGE <br>
-                <span class="text-blue-400 font-black">KOPRI</span>
-            </h1>
-            <p class="text-xl md:text-2xl text-gray-400 max-w-2xl mx-auto mb-10 leading-relaxed">
-                Software Engineer & Unity Developer — 5+ years shipping global mobile games. <br>
-                Specializing in <span class="text-white font-bold">gameplay systems & tools</span>, <span class="text-white font-bold">mobile optimization</span>, and <span class="text-white font-bold">workflow automation</span>.
-            </p>
-            <div class="flex flex-col md:flex-row justify-center gap-4">
-                <a href="#work" class="bg-blue-500 hover:bg-blue-600 text-white px-8 py-4 rounded-lg font-bold text-lg transition shadow-md">
-                    View Portfolio
+        <section class="chooser" aria-labelledby="chooser-title">
+            <h2 id="chooser-title" style="margin: 0 0 8px; font-size: 20px;">Choose the profile relevant to your role</h2>
+            <p>Each version highlights the experience, projects, and résumé most useful for that hiring track.</p>
+            <div class="choices">
+                <a class="choice" href="software-engineer/index.html" data-track-link>
+                    <span class="choice-label">Applications &amp; tools</span>
+                    <h2>Software engineering</h2>
+                    <p>C#, TypeScript, developer tools, desktop and web applications, APIs, testing, automation, and delivery.</p>
+                    <span class="choice-action">
+                        View software profile
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m9 18 6-6-6-6"></path></svg>
+                    </span>
                 </a>
-                <a href="mailto:anthonyegekopri@gmail.com" class="bg-gray-800 hover:bg-gray-700 text-white px-8 py-4 rounded-lg font-bold text-lg transition border border-gray-600">
-                    Get in Touch
+
+                <a class="choice" href="game-developer/index.html" data-track-link>
+                    <span class="choice-label">Unity &amp; gameplay</span>
+                    <h2>Game development</h2>
+                    <p>Unity, C#, gameplay systems, Editor tooling, mobile production, rapid prototyping, multiplayer, and live products.</p>
+                    <span class="choice-action">
+                        View game profile
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m9 18 6-6-6-6"></path></svg>
+                    </span>
                 </a>
             </div>
-            
-            <!-- Tech Stack Pills -->
-            <div class="mt-16 flex flex-wrap justify-center gap-3 opacity-70">
-                <span class="px-4 py-2 border border-white/10 rounded-full text-sm font-mono text-gray-300">Unity 3D</span>
-                <span class="px-4 py-2 border border-white/10 rounded-full text-sm font-mono text-gray-300">C#</span>
-                <span class="px-4 py-2 border border-white/10 rounded-full text-sm font-mono text-gray-300">Mobile Games</span>
-                <span class="px-4 py-2 border border-white/10 rounded-full text-sm font-mono text-gray-300">Editor Tooling</span>
-                <span class="px-4 py-2 border border-white/10 rounded-full text-sm font-mono text-gray-300">Automation</span>
+
+            <div class="profile-links" aria-label="General profile links">
+                <a href="mailto:anthonyegekopri@gmail.com">anthonyegekopri@gmail.com</a>
+                <a href="tel:+4917645782871">+49 176 4578 2871</a>
+                <a href="https://www.linkedin.com/in/anthony-kpr" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a href="https://github.com/AnthonyKopri" target="_blank" rel="noopener noreferrer">GitHub</a>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
-    <!-- Selected Works (Dynamic JS Injection) -->
-    <section id="work" class="py-24 bg-black/50">
-        <div class="container mx-auto px-6">
-            <div class="flex items-end justify-between mb-16">
-                <div>
-                    <h2 class="text-4xl md:text-5xl font-bold mb-2">Selected Works</h2>
-                    <p class="text-gray-400">Shipped titles and prototyping highlights</p>
-                </div>
-                <div class="hidden md:block w-32 h-1 bg-blue-500 rounded-full"></div>
-            </div>
-
-            <!-- Project Grid: Content injected via JS below -->
-            <div id="project-container" class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Javascript will populate this -->
-            </div>
-        </div>
-    </section>
-
-    <!-- Experience & Skills -->
-    <section id="experience" class="py-24">
-        <div class="container mx-auto px-6">
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-16">
-                
-                <!-- Experience Column -->
-                <div class="lg:col-span-2">
-                    <h2 class="text-3xl font-bold mb-8 flex items-center gap-3">
-                        <span class="text-blue-400">#</span> Experience
-                    </h2>
-                    
-                    <div class="space-y-12 border-l-2 border-white/10 pl-8 ml-4 relative">
-                        
-                        <!-- Item 1: Familiara -->
-                        <div class="relative">
-                            <div class="absolute -left-[41px] top-1 h-5 w-5 rounded-full bg-blue-500 border-4 border-black"></div>
-                            <div class="flex flex-col sm:flex-row sm:items-baseline justify-between mb-2">
-                                <h3 class="text-2xl font-bold text-white">Software & Automation Developer</h3>
-                                <span class="text-sm font-mono text-gray-400">May 2026 - Present</span>
-                            </div>
-                            <p class="text-blue-400 text-sm mb-2">Familiara GmbH · Berlin, Germany · Part-time</p>
-                            <ul class="list-disc list-inside text-gray-400 space-y-2 mt-2">
-                                <li>Support frontend implementation and internal software automation for a care-support company — UI updates, form handling, API integration, and process improvements.</li>
-                                <li>Build lightweight internal tools and website improvements using JavaScript, HTML/CSS, and Git/GitHub Actions pipelines.</li>
-                                <li>Apply Salesforce CRM exposure and AI-assisted development workflows to accelerate delivery.</li>
-                            </ul>
-                        </div>
-
-                        <!-- Item 2: Rocket Tuna Games -->
-                        <div class="relative">
-                            <div class="absolute -left-[41px] top-1 h-5 w-5 rounded-full bg-gray-700 border-4 border-black"></div>
-                            <div class="flex flex-col sm:flex-row sm:items-baseline justify-between mb-2">
-                                <h3 class="text-2xl font-bold text-white">Co-Founder & Senior Unity Developer</h3>
-                                <span class="text-sm font-mono text-gray-400">Apr 2025 - Sep 2025</span>
-                            </div>
-                            <p class="text-blue-400 text-sm mb-2">Rocket Tuna Games · Romania / Remote</p>
-                            <ul class="list-disc list-inside text-gray-400 space-y-2 mt-2">
-                                <li>Built Unity Editor tools and internal plugins to streamline level design, UI workflows, and fast iteration.</li>
-                                <li>Created reusable templates and automated repetitive tasks to accelerate prototyping.</li>
-                                <li>Managed technical implementation and standardized architecture for small team productivity.</li>
-                            </ul>
-                        </div>
-
-                        <!-- Item 3: NanoTribe -->
-                        <div class="relative">
-                            <div class="absolute -left-[41px] top-1 h-5 w-5 rounded-full bg-gray-700 border-4 border-black"></div>
-                            <div class="flex flex-col sm:flex-row sm:items-baseline justify-between mb-2">
-                                <h3 class="text-2xl font-bold text-white">Unity Developer</h3>
-                                <span class="text-sm font-mono text-gray-400">Feb 2021 - Mar 2025</span>
-                            </div>
-                            <p class="text-blue-400 text-sm mb-2">NanoTribe GmbH · Berlin, Germany</p>
-                            <p class="text-gray-400 mb-2 italic">Shipped: Cashier 3D, Arrow Fest, Bus Jam, Tangled Snakes</p>
-                            <ul class="list-disc list-inside text-gray-400 space-y-2">
-                                <li>Designed internal tools and Unity Editor extensions to speed up designer workflows.</li>
-                                <li>Refactored legacy codebases for stability, performance, and maintainability.</li>
-                                <li>Implemented core gameplay systems and automated parts of the content creation pipeline.</li>
-                            </ul>
-                        </div>
-
-                        <!-- Item 4: ValhallaVerse -->
-                        <div class="relative">
-                            <div class="absolute -left-[41px] top-1 h-5 w-5 rounded-full bg-gray-700 border-4 border-black"></div>
-                            <div class="flex flex-col sm:flex-row sm:items-baseline justify-between mb-2">
-                                <h3 class="text-2xl font-bold text-white">Freelance Game Developer</h3>
-                                <span class="text-sm font-mono text-gray-400">Dec 2021 - Nov 2022</span>
-                            </div>
-                            <p class="text-blue-400 text-sm mb-2">ValhallaVerse · Remote</p>
-                            <ul class="list-disc list-inside text-gray-400 space-y-2 mt-2">
-                                <li>Worked on Unity game development tasks involving WebGL, multiplayer gameplay, and Web3 requirements.</li>
-                                <li>Gained experience with Unity Multiplayer, Mirror, and Photon libraries.</li>
-                                <li>Built and adjusted custom Unity tools and workflows to support faster development and testing.</li>
-                            </ul>
-                        </div>
-
-                        <!-- Item 5: Besh Bilişim -->
-                        <div class="relative">
-                            <div class="absolute -left-[41px] top-1 h-5 w-5 rounded-full bg-gray-700 border-4 border-black"></div>
-                            <div class="flex flex-col sm:flex-row sm:items-baseline justify-between mb-2">
-                                <h3 class="text-2xl font-bold text-white">Junior Full-Stack Programmer</h3>
-                                <span class="text-sm font-mono text-gray-400">Aug 2019 - Aug 2020</span>
-                            </div>
-                            <p class="text-blue-400 text-sm mb-2">Besh Bilişim Donanim ve Internet Hizmetleri · Izmir, Turkey</p>
-                            <p class="text-gray-400">
-                                Delivered hardware-related prototype as sole developer. Built internal proprietary file explorer/reader/editor tool for accessibility.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Skills Column -->
-                <div>
-                    <h2 class="text-3xl font-bold mb-8 flex items-center gap-3">
-                        <span class="text-blue-400">#</span> Skills
-                    </h2>
-                    
-                    <div>
-                        <div class="glass-card p-6 rounded-2xl mb-8">
-                            <h4 class="text-lg font-bold text-white mb-4 border-b border-white/10 pb-2">Core Tech</h4>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="px-3 py-1 bg-blue-600/20 text-blue-300 rounded text-sm">Unity 3D</span>
-                                <span class="px-3 py-1 bg-blue-600/20 text-blue-300 rounded text-sm">C#</span>
-                                <span class="px-3 py-1 bg-blue-600/20 text-blue-300 rounded text-sm">JavaScript</span>
-                                <span class="px-3 py-1 bg-blue-600/20 text-blue-300 rounded text-sm">Python</span>
-                                <span class="px-3 py-1 bg-blue-600/20 text-blue-300 rounded text-sm">Java</span>
-                                <span class="px-3 py-1 bg-blue-600/20 text-blue-300 rounded text-sm">SQL</span>
-                                <span class="px-3 py-1 bg-blue-600/20 text-blue-300 rounded text-sm">C</span>
-                                <span class="px-3 py-1 bg-blue-600/20 text-blue-300 rounded text-sm">Git</span>
-                            </div>
-                        </div>
-
-                        <div class="glass-card p-6 rounded-2xl mb-8">
-                            <h4 class="text-lg font-bold text-white mb-4 border-b border-white/10 pb-2">Game Development</h4>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="px-3 py-1 bg-green-600/20 text-green-300 rounded text-sm">Editor Scripting</span>
-                                <span class="px-3 py-1 bg-green-600/20 text-green-300 rounded text-sm">Zenject</span>
-                                <span class="px-3 py-1 bg-green-600/20 text-green-300 rounded text-sm">UniRx</span>
-                                <span class="px-3 py-1 bg-green-600/20 text-green-300 rounded text-sm">Addressables</span>
-                                <span class="px-3 py-1 bg-green-600/20 text-green-300 rounded text-sm">CI/CD</span>
-                                <span class="px-3 py-1 bg-green-600/20 text-green-300 rounded text-sm">Multiplayer</span>
-                                <span class="px-3 py-1 bg-green-600/20 text-green-300 rounded text-sm">Web3</span>
-                            </div>
-                        </div>
-
-                        <div class="glass-card p-6 rounded-2xl mb-8">
-                            <h4 class="text-lg font-bold text-white mb-4 border-b border-white/10 pb-2">Mobile & Live Ops</h4>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="px-3 py-1 bg-orange-600/20 text-orange-300 rounded text-sm">AdMob</span>
-                                <span class="px-3 py-1 bg-orange-600/20 text-orange-300 rounded text-sm">Unity Ads</span>
-                                <span class="px-3 py-1 bg-orange-600/20 text-orange-300 rounded text-sm">GameAnalytics</span>
-                                <span class="px-3 py-1 bg-orange-600/20 text-orange-300 rounded text-sm">Adjust</span>
-                                <span class="px-3 py-1 bg-orange-600/20 text-orange-300 rounded text-sm">Firebase</span>
-                                <span class="px-3 py-1 bg-orange-600/20 text-orange-300 rounded text-sm">TestFlight</span>
-                                <span class="px-3 py-1 bg-orange-600/20 text-orange-300 rounded text-sm">Play Console</span>
-                            </div>
-                        </div>
-
-                        <div class="glass-card p-6 rounded-2xl mb-8">
-                            <h4 class="text-lg font-bold text-white mb-4 border-b border-white/10 pb-2">Web & Automation <span class="text-xs font-normal text-gray-500">· AI-assisted</span></h4>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="px-3 py-1 bg-purple-600/20 text-purple-300 rounded text-sm">HTML/CSS</span>
-                                <span class="px-3 py-1 bg-purple-600/20 text-purple-300 rounded text-sm">React</span>
-                                <span class="px-3 py-1 bg-purple-600/20 text-purple-300 rounded text-sm">Tailwind</span>
-                                <span class="px-3 py-1 bg-purple-600/20 text-purple-300 rounded text-sm">GitHub Actions</span>
-                                <span class="px-3 py-1 bg-purple-600/20 text-purple-300 rounded text-sm">Salesforce</span>
-                            </div>
-                        </div>
-
-                        <div class="glass-card p-6 rounded-2xl mb-8">
-                            <h4 class="text-lg font-bold text-white mb-4 border-b border-white/10 pb-2">Education</h4>
-                            <p class="text-white font-bold">BSc, Computer Science</p>
-                            <p class="text-blue-400 text-sm mb-2">Dokuz Eylül University</p>
-                            <ul class="space-y-1 text-gray-400 text-sm">
-                                <li class="flex justify-between"><span>Jun 2018 – Jun 2022</span> <span class="text-white">GPA 3.33/4.00</span></li>
-                                <li>Capstone: Synesthesia (GAN)</li>
-                            </ul>
-                        </div>
-
-                        <div class="glass-card p-6 rounded-2xl">
-                            <h4 class="text-lg font-bold text-white mb-4 border-b border-white/10 pb-2">Languages</h4>
-                            <ul class="space-y-2 text-gray-400 text-sm">
-                                <li class="flex justify-between"><span>Turkish</span> <span class="text-white">Native</span></li>
-                                <li class="flex justify-between"><span>English</span> <span class="text-white">Bilingual</span></li>
-                                <li class="flex justify-between"><span>German</span> <span class="text-white">A2 (Learning)</span></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="py-24 relative overflow-hidden">
-        <div class="absolute bottom-0 left-0 w-full h-full bg-gradient-to-t from-blue-900/20 to-transparent pointer-events-none"></div>
-        <div class="container mx-auto px-6 text-center">
-            <h2 class="text-5xl md:text-7xl font-black mb-8">LET'S BUILD <br><span class="text-gray-600">SOMETHING</span> <span class="text-white">GREAT</span></h2>
-            <p class="text-xl text-gray-400 mb-12 max-w-2xl mx-auto">
-                I'm currently open to opportunities in Unity Development, Technical Programming, and Tools Development.
-            </p>
-            <a href="mailto:anthonyegekopri@gmail.com" class="inline-flex items-center gap-3 bg-white text-black px-10 py-5 rounded-full font-bold text-xl hover:bg-gray-200 transition">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-                anthonyegekopri@gmail.com
-            </a>
-            
-            <div class="mt-12 flex justify-center gap-6">
-                <a href="https://www.linkedin.com/in/anthony-kpr" target="_blank" class="text-gray-400 hover:text-white transition underline underline-offset-4">LinkedIn</a>
-                <a href="docs/Anthony_Ege_Kopri_Resume.pdf" target="_blank" class="text-gray-400 hover:text-white transition underline underline-offset-4">Resume (ATS)</a>
-            </div>
-            
-            <footer class="mt-24 text-gray-600 text-sm">
-                &copy; 2026 Anthony Ege Kopri. Berlin, Germany.
-            </footer>
-        </div>
-    </section>
-
-    <!-- JAVASCRIPT FOR PROJECTS -->
     <script>
-        // ==========================================
-        //  USER CONFIGURATION AREA
-        // ==========================================
-        
-        // Instructions:
-        // 1. To add a project, copy one of the objects inside { ... } and paste it at the top of the list.
-        // 2. 'image' can be a URL or a local path.
-        // 3. 'tags' will appear as small pills on the card.
-        // 4. Leave 'ios' or 'android' as null or "" if you don't have a link for that store.
+        const companyName = new URLSearchParams(window.location.search).get('company')?.trim();
+        if (companyName) {
+            const welcome = document.getElementById('company-welcome');
+            welcome.textContent = `Welcome, ${companyName} team. Please choose the profile that best matches the position.`;
+            welcome.classList.add('visible');
 
-        const projects = [
-            {
-                title: "Cashier 3D",
-                description: "A hit hyper-casual simulation game. I worked on core mechanics, optimization, and rapid feature iteration to support its massive scaling.",
-                image: "img/cashier3d.webp", // Local image path
-                tags: ["Simulation", "Hyper-casual", "Optimization"],
-                ios: "https://apps.apple.com/us/app/cashier-3d/id1519029260", // Appstore link
-                android: "https://play.google.com/store/apps/details?id=com.nanotribe.games.cashier3d" // Playstore link
-            },
-            {
-                title: "Arrow Fest",
-                description: "A fast-paced runner game involving complex math-based crowd mechanics. Developed systems for crowd pooling and dynamic level generation.",
-                image: "img/arrowfest.webp", // Local image path
-                tags: ["Runner", "Math Mechanics", "Physics"],
-                ios: "https://apps.apple.com/us/app/arrow-fest/id1569353501",
-                android: "https://play.google.com/store/apps/details?id=com.nanotribe.games.arrowfest"
-            },
-            {
-                title: "Bus Jam",
-                description: "A challenging traffic puzzle game. My focus was on the grid logic system, AI pathfinding for vehicles, and creating level design tools.",
-                image: "img/busjam.webp", // Local image path
-                tags: ["Puzzle", "Pathfinding", "Logic"],
-                ios: "https://apps.apple.com/us/app/bus-jam/id6450176534",
-                android: "https://play.google.com/store/apps/details?id=com.nt.games.busjam"
-            },
-            {
-                title: "Tangled Snakes",
-                description: "A physics-based untangling puzzle. Implemented soft-body physics approximations and collision handling for smooth gameplay feel.",
-                image: "img/tangledsnakes.webp", // Local image path
-                tags: ["Physics", "Puzzle", "Unity"],
-                ios: "https://apps.apple.com/us/app/tangled-snakes/id1665914232",
-                android: "https://play.google.com/store/apps/details?id=com.nt.games.tangledsnakes"
-            }
-        ];
-
-        // ==========================================
-        //  RENDER LOGIC
-        // ==========================================
-
-        const container = document.getElementById('project-container');
-
-        function initCompanyGreeting() {
-            const params = new URLSearchParams(window.location.search);
-            const companyParam = params.get('company');
-            if (!companyParam) {
-                return;
-            }
-
-            const companyName = companyParam.trim();
-            if (!companyName) {
-                return;
-            }
-
-            const greetingSection = document.getElementById('company-greeting');
-            const greetingText = document.getElementById('company-greeting-text');
-            if (!greetingSection || !greetingText) {
-                return;
-            }
-
-            greetingText.textContent = `Welcome, ${companyName} team. Thank you for taking the time to review my portfolio.`;
-            greetingSection.classList.remove('hidden');
+            document.querySelectorAll('[data-track-link]').forEach((link) => {
+                const destination = new URL(link.href);
+                destination.searchParams.set('company', companyName);
+                link.href = destination.toString();
+            });
         }
-
-        const icons = {
-            apple: `<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.74 1.18 0 2.21-.93 3.69-.74 2.56.24 3.55 1.5 3.55 1.5s-2.04 1.22-2.04 3.82c0 2.87 2.55 3.86 2.55 3.86s-1.78 3.82-2.83 3.79zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.19 2.25-2.07 4.19-3.74 4.25z"/></svg>`,
-            android: `<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.523 15.3414c-.5511 0-.9993-.4486-.9993-.9997s.4482-.9993.9993-.9993c.5511 0 .9993.4482.9993.9993.0001.5511-.4482.9997-.9993.9997m-11.046 0c-.5511 0-.9993-.4486-.9993-.9997s.4482-.9993.9993-.9993c.5511 0 .9993.4482.9993.9993 0 .5511-.4482.9997-.9993.9997m11.4045-6.02l1.9973-3.4592a.416.416 0 00-.1529-.5676.416.416 0 00-.5676.1529L17.218 8.818c-2.0628-.9165-4.4234-.9165-6.4361 0L8.8415 5.4475a.4158.4158 0 00-.5676-.1529.416.416 0 00-.1529.5676l1.9973 3.4592C6.6781 10.963 4.417 14.3417 4.417 18h15.166c0-3.6583-2.2611-7.037-5.6555-8.6786"/></svg>`
-        };
-
-        function renderProjects() {
-            if (!container) {
-                return;
-            }
-
-            container.innerHTML = projects.map(project => {
-                // Generate badges HTML
-                let badges = '';
-                if (project.ios) {
-                    badges += `<a href="${project.ios}" target="_blank" class="flex items-center gap-2 text-xs font-bold bg-white text-black px-3 py-2 rounded hover:bg-gray-200 transition">
-                        ${icons.apple} App Store
-                    </a>`;
-                }
-                if (project.android) {
-                    badges += `<a href="${project.android}" target="_blank" class="flex items-center gap-2 text-xs font-bold bg-white text-black px-3 py-2 rounded hover:bg-gray-200 transition">
-                        ${icons.android} Play Store
-                    </a>`;
-                }
-                if (!badges) {
-                    badges = `<span class="text-xs text-gray-500 font-mono">Internal / Prototype</span>`;
-                }
-
-                // Generate tags HTML
-                const tags = project.tags.map(tag => `<span class="text-xs font-mono text-blue-300 border border-blue-400/30 px-2 py-1 rounded">${tag}</span>`).join('');
-
-                return `
-                <div class="project-card group relative rounded-2xl overflow-hidden glass-card transition-all duration-300 hover:shadow-md hover:-translate-y-2">
-                    <div class="relative h-64 overflow-hidden">
-                        <img src="${project.image}" alt="${project.title}" class="project-image w-full h-full object-cover transition-transform duration-500">
-                        <div class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-80"></div>
-                        <div class="absolute bottom-4 left-4">
-                             <div class="flex gap-2 mb-2">${tags}</div>
-                        </div>
-                    </div>
-                    
-                    <div class="p-8">
-                        <div class="flex justify-between items-start mb-4">
-                            <h3 class="text-3xl font-bold group-hover:text-blue-400 transition cursor-pointer">
-                                <a href="${project.ios || project.android || '#'}" target="_blank">${project.title}</a>
-                            </h3>
-                        </div>
-                        <p class="text-gray-400 mb-8 leading-relaxed">
-                            ${project.description}
-                        </p>
-                        
-                        <div class="flex gap-3 mt-auto">
-                            ${badges}
-                        </div>
-                    </div>
-                </div>
-                `;
-            }).join('');
-        }
-
-        initCompanyGreeting();
-        renderProjects();
     </script>
 </body>
 </html>

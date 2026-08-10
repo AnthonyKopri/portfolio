@@ -1,0 +1,1610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Anthony Ege Kopri is a Berlin-based Unity game developer and C# gameplay engineer focused on gameplay systems, Editor tooling, mobile production, prototyping, and multiplayer.">
+    <meta name="theme-color" content="#f8fafc">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230b57d0'/%3E%3Ctext x='32' y='39' text-anchor='middle' font-family='Arial' font-size='20' font-weight='700' fill='white'%3EAK%3C/text%3E%3C/svg%3E">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Anthony Ege Kopri | Unity Game Developer">
+    <meta property="og:description" content="C# gameplay systems, Unity Editor tooling, mobile production, rapid prototyping, multiplayer, and shipped games.">
+    <meta property="og:url" content="https://anthonykopri.github.io/portfolio/game-developer/">
+    <link rel="canonical" href="https://anthonykopri.github.io/portfolio/game-developer/">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>Anthony Ege Kopri | Unity Game Developer</title>
+
+    <style>
+        :root {
+            color-scheme: light;
+            --primary: #0b57d0;
+            --primary-dark: #0842a0;
+            --primary-container: #dbe8ff;
+            --primary-ink: #123563;
+            --ink: #172033;
+            --ink-soft: #526078;
+            --surface: #ffffff;
+            --surface-alt: #f5f7fb;
+            --surface-strong: #edf2f8;
+            --outline: #d8e0eb;
+            --outline-strong: #bdc8d8;
+            --navy: #13233d;
+            --success: #18794e;
+            --shadow-1: 0 1px 3px rgba(21, 36, 60, 0.09);
+            --shadow-2: 0 12px 34px rgba(21, 36, 60, 0.11);
+            --radius-sm: 10px;
+            --radius-md: 16px;
+            --radius-lg: 24px;
+            --shell: 1160px;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            min-width: 320px;
+            scroll-behavior: smooth;
+            scroll-padding-top: 92px;
+        }
+
+        body {
+            margin: 0;
+            background: var(--surface);
+            color: var(--ink);
+            font-family: "Roboto", "Segoe UI", Arial, sans-serif;
+            line-height: 1.6;
+            text-rendering: optimizeLegibility;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body.menu-open {
+            overflow: hidden;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+        }
+
+        button {
+            font: inherit;
+        }
+
+        :focus-visible {
+            outline: 3px solid rgba(11, 87, 208, 0.38);
+            outline-offset: 3px;
+        }
+
+        ::selection {
+            background: var(--primary-container);
+            color: var(--primary-ink);
+        }
+
+        .shell {
+            width: min(calc(100% - 48px), var(--shell));
+            margin-inline: auto;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .skip-link {
+            position: fixed;
+            top: 12px;
+            left: 12px;
+            z-index: 200;
+            padding: 10px 16px;
+            border-radius: var(--radius-sm);
+            background: var(--navy);
+            color: #ffffff;
+            transform: translateY(-160%);
+            transition: transform 160ms ease;
+        }
+
+        .skip-link:focus {
+            transform: translateY(0);
+        }
+
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(216, 224, 235, 0.9);
+            background: rgba(255, 255, 255, 0.94);
+            backdrop-filter: blur(16px);
+        }
+
+        .header-inner {
+            position: relative;
+            display: flex;
+            min-height: 76px;
+            align-items: center;
+            gap: 22px;
+        }
+
+        .brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            flex: 0 0 auto;
+        }
+
+        .brand-mark {
+            display: grid;
+            width: 42px;
+            height: 42px;
+            place-items: center;
+            border-radius: 13px;
+            background: var(--primary);
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            box-shadow: var(--shadow-1);
+        }
+
+        .brand-copy {
+            display: grid;
+            line-height: 1.22;
+        }
+
+        .brand-copy strong {
+            font-size: 15px;
+        }
+
+        .brand-copy span {
+            color: var(--ink-soft);
+            font-size: 12px;
+        }
+
+        .site-nav {
+            display: flex;
+            align-items: center;
+            gap: 3px;
+            margin-left: auto;
+        }
+
+        .site-nav a {
+            padding: 9px 11px;
+            border-radius: 999px;
+            color: #3f4d63;
+            font-size: 14px;
+            font-weight: 500;
+            transition: background 150ms ease, color 150ms ease;
+        }
+
+        .site-nav a:hover {
+            background: var(--surface-strong);
+            color: var(--primary);
+        }
+
+        .site-nav .track-link {
+            margin-left: 4px;
+            background: var(--primary-container);
+            color: var(--primary-ink);
+        }
+
+        .site-nav .track-link:hover {
+            background: #c9ddff;
+            color: var(--primary-ink);
+        }
+
+        .menu-toggle {
+            display: none;
+            width: 44px;
+            height: 44px;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--outline);
+            border-radius: 50%;
+            background: var(--surface);
+            color: var(--ink);
+            cursor: pointer;
+        }
+
+        .menu-toggle svg {
+            width: 22px;
+            height: 22px;
+        }
+
+        .button {
+            display: inline-flex;
+            min-height: 48px;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+            padding: 0 22px;
+            border: 1px solid transparent;
+            border-radius: 999px;
+            font-size: 15px;
+            font-weight: 600;
+            line-height: 1;
+            transition: background 160ms ease, border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+        }
+
+        .button:hover {
+            transform: translateY(-1px);
+        }
+
+        .button svg {
+            width: 19px;
+            height: 19px;
+        }
+
+        .button-primary {
+            background: var(--primary);
+            color: #ffffff;
+            box-shadow: 0 2px 8px rgba(11, 87, 208, 0.24);
+        }
+
+        .button-primary:hover {
+            background: var(--primary-dark);
+        }
+
+        .button-outline {
+            border-color: var(--outline-strong);
+            background: var(--surface);
+            color: var(--primary);
+        }
+
+        .button-outline:hover {
+            border-color: var(--primary);
+            background: #f7faff;
+        }
+
+        .button-tonal {
+            background: var(--primary-container);
+            color: var(--primary-ink);
+        }
+
+        .button-small {
+            min-height: 40px;
+            padding-inline: 17px;
+            font-size: 14px;
+        }
+
+        .header-resume {
+            flex: 0 0 auto;
+        }
+
+        .company-message {
+            border-bottom: 1px solid #b9cdf0;
+            background: #eef5ff;
+        }
+
+        .company-message .shell {
+            display: flex;
+            min-height: 48px;
+            align-items: center;
+            gap: 10px;
+            color: #25466f;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .company-message svg {
+            width: 19px;
+            height: 19px;
+            color: var(--primary);
+        }
+
+        .hero {
+            overflow: hidden;
+            border-bottom: 1px solid #e9eef5;
+            background:
+                radial-gradient(circle at 88% 12%, rgba(11, 87, 208, 0.09), transparent 28%),
+                linear-gradient(180deg, #f5f8fd 0%, #ffffff 88%);
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1.35fr) minmax(340px, 0.65fr);
+            min-height: 650px;
+            align-items: center;
+            gap: clamp(48px, 7vw, 88px);
+            padding-block: 88px 96px;
+        }
+
+        .availability {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            margin-bottom: 24px;
+            padding: 7px 12px;
+            border: 1px solid #cdd8e8;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.86);
+            color: #405069;
+            font-size: 13px;
+            font-weight: 500;
+            box-shadow: var(--shadow-1);
+        }
+
+        .availability-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--success);
+            box-shadow: 0 0 0 4px rgba(24, 121, 78, 0.12);
+        }
+
+        .hero-name {
+            margin: 0 0 10px;
+            color: var(--primary);
+            font-size: clamp(16px, 1.8vw, 20px);
+            font-weight: 700;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        p {
+            margin-top: 0;
+        }
+
+        h1 {
+            margin-bottom: 24px;
+            font-size: clamp(42px, 5.3vw, 68px);
+            line-height: 1.08;
+            letter-spacing: -0.035em;
+        }
+
+        .hero-copy {
+            max-width: 730px;
+            margin-bottom: 32px;
+            color: var(--ink-soft);
+            font-size: clamp(18px, 2vw, 21px);
+            line-height: 1.65;
+        }
+
+        .hero-copy strong {
+            color: var(--ink);
+            font-weight: 600;
+        }
+
+        .hero-actions,
+        .contact-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .quick-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 18px;
+            margin-top: 25px;
+            font-size: 14px;
+        }
+
+        .quick-links a {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .quick-links a:hover {
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        .profile-panel {
+            padding: 28px;
+            border: 1px solid rgba(200, 211, 225, 0.9);
+            border-radius: var(--radius-lg);
+            background: rgba(255, 255, 255, 0.92);
+            box-shadow: var(--shadow-2);
+        }
+
+        .eyebrow,
+        .section-kicker {
+            margin-bottom: 10px;
+            color: var(--primary);
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.09em;
+            text-transform: uppercase;
+        }
+
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-bottom: 24px;
+        }
+
+        .stat-card {
+            min-height: 126px;
+            padding: 18px;
+            border: 1px solid var(--outline);
+            border-radius: var(--radius-md);
+            background: var(--surface-alt);
+        }
+
+        .stat-card strong {
+            display: block;
+            margin-bottom: 5px;
+            color: var(--primary);
+            font-size: 29px;
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+        }
+
+        .stat-card span {
+            display: block;
+            color: #536178;
+            font-size: 13px;
+            line-height: 1.4;
+        }
+
+        .focus-block {
+            padding-top: 20px;
+            border-top: 1px solid var(--outline);
+        }
+
+        .focus-block h2 {
+            margin-bottom: 13px;
+            font-size: 15px;
+        }
+
+        .chip-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .chip {
+            display: inline-flex;
+            min-height: 32px;
+            align-items: center;
+            padding: 5px 11px;
+            border: 1px solid var(--outline);
+            border-radius: 999px;
+            background: #ffffff;
+            color: #43516a;
+            font-size: 13px;
+            font-weight: 500;
+            line-height: 1.2;
+        }
+
+        .section {
+            padding-block: 96px;
+            scroll-margin-top: 88px;
+        }
+
+        .section-alt {
+            border-block: 1px solid #e9eef5;
+            background: var(--surface-alt);
+        }
+
+        .section-heading {
+            margin-bottom: 40px;
+        }
+
+        .section-heading h2 {
+            max-width: 790px;
+            margin-bottom: 0;
+            font-size: clamp(32px, 4vw, 46px);
+            line-height: 1.17;
+            letter-spacing: -0.025em;
+        }
+
+        .section-intro {
+            max-width: 640px;
+            margin: 14px 0 0;
+            color: var(--ink-soft);
+            font-size: 17px;
+        }
+
+        .highlight-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 20px;
+        }
+
+        .highlight-card {
+            padding: clamp(26px, 4vw, 38px);
+            border: 1px solid var(--outline);
+            border-radius: var(--radius-lg);
+            background: var(--surface);
+            box-shadow: var(--shadow-1);
+        }
+
+        .highlight-icon {
+            display: grid;
+            width: 48px;
+            height: 48px;
+            margin-bottom: 22px;
+            place-items: center;
+            border-radius: 14px;
+            background: var(--primary-container);
+            color: var(--primary);
+        }
+
+        .highlight-icon svg {
+            width: 25px;
+            height: 25px;
+        }
+
+        .highlight-card h3 {
+            margin-bottom: 12px;
+            font-size: 24px;
+        }
+
+        .highlight-card p {
+            margin-bottom: 0;
+            color: var(--ink-soft);
+        }
+
+        .game-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 24px;
+        }
+
+        .game-card {
+            display: grid;
+            grid-template-columns: 190px minmax(0, 1fr);
+            min-height: 310px;
+            overflow: hidden;
+            border: 1px solid var(--outline);
+            border-radius: var(--radius-lg);
+            background: var(--surface);
+            box-shadow: var(--shadow-1);
+            transition: box-shadow 180ms ease, transform 180ms ease;
+        }
+
+        .game-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-2);
+        }
+
+        .game-media {
+            min-height: 100%;
+            overflow: hidden;
+            background: var(--surface-strong);
+        }
+
+        .game-media img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .game-content {
+            display: flex;
+            flex-direction: column;
+            padding: 26px;
+        }
+
+        .game-content h3 {
+            margin-bottom: 10px;
+            font-size: 24px;
+            line-height: 1.25;
+        }
+
+        .game-content p {
+            margin-bottom: 20px;
+            color: var(--ink-soft);
+            font-size: 14px;
+            line-height: 1.55;
+        }
+
+        .store-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px 14px;
+            margin-top: auto;
+        }
+
+        .store-links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            color: var(--primary);
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .store-links a:hover {
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        .store-links svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .experience-list {
+            overflow: hidden;
+            border: 1px solid var(--outline);
+            border-radius: var(--radius-lg);
+            background: var(--surface);
+            box-shadow: var(--shadow-1);
+        }
+
+        .role {
+            display: grid;
+            grid-template-columns: minmax(220px, 0.42fr) minmax(0, 1fr);
+            gap: clamp(28px, 6vw, 76px);
+            padding: 38px clamp(24px, 4vw, 44px);
+            border-bottom: 1px solid var(--outline);
+        }
+
+        .role:last-child {
+            border-bottom: 0;
+        }
+
+        .role h3 {
+            margin-bottom: 8px;
+            font-size: 21px;
+            line-height: 1.3;
+        }
+
+        .company {
+            margin-bottom: 8px;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .role-meta {
+            margin-bottom: 0;
+            color: var(--ink-soft);
+            font-size: 14px;
+        }
+
+        .role ul,
+        .project-card ul {
+            display: grid;
+            gap: 10px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .role li,
+        .project-card li {
+            position: relative;
+            padding-left: 24px;
+            color: #435169;
+            font-size: 15px;
+        }
+
+        .role li::before,
+        .project-card li::before {
+            position: absolute;
+            top: 0.68em;
+            left: 2px;
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--primary);
+            content: "";
+        }
+
+        .project-card {
+            display: grid;
+            grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.65fr);
+            overflow: hidden;
+            border: 1px solid var(--outline);
+            border-radius: var(--radius-lg);
+            background: var(--surface);
+            box-shadow: var(--shadow-1);
+        }
+
+        .project-body {
+            padding: clamp(28px, 5vw, 48px);
+        }
+
+        .project-body h3 {
+            margin-bottom: 10px;
+            font-size: 32px;
+        }
+
+        .project-stack {
+            margin-bottom: 22px;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .project-card ul {
+            margin-bottom: 28px;
+        }
+
+        .project-aside {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: clamp(28px, 4vw, 42px);
+            background: var(--navy);
+            color: #ffffff;
+        }
+
+        .project-aside strong {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 38px;
+            line-height: 1;
+        }
+
+        .project-aside span {
+            color: #c7d1e2;
+            font-size: 14px;
+        }
+
+        .skills-layout {
+            display: grid;
+            grid-template-columns: minmax(0, 1.4fr) minmax(300px, 0.6fr);
+            gap: 24px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px;
+        }
+
+        .skill-card,
+        .credential-card {
+            padding: 26px;
+            border: 1px solid var(--outline);
+            border-radius: var(--radius-md);
+            background: var(--surface);
+            box-shadow: var(--shadow-1);
+        }
+
+        .skill-card h3,
+        .credential-card h3 {
+            margin-bottom: 15px;
+            font-size: 17px;
+        }
+
+        .skill-card p,
+        .credential-card p {
+            margin-bottom: 0;
+            color: var(--ink-soft);
+            font-size: 14px;
+        }
+
+        .skill-card-wide {
+            grid-column: 1 / -1;
+        }
+
+        .credentials {
+            display: grid;
+            align-content: start;
+            gap: 16px;
+        }
+
+        .institution {
+            margin-bottom: 7px !important;
+            color: var(--primary) !important;
+            font-weight: 600;
+        }
+
+        .credential-details {
+            display: grid;
+            gap: 8px;
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid var(--outline);
+            color: #4d5b72;
+            font-size: 14px;
+        }
+
+        .language-list {
+            display: grid;
+            gap: 11px;
+            margin: 0;
+        }
+
+        .language-list div {
+            display: flex;
+            justify-content: space-between;
+            gap: 16px;
+        }
+
+        .language-list dt {
+            font-weight: 600;
+        }
+
+        .language-list dd {
+            margin: 0;
+            color: var(--ink-soft);
+            font-size: 14px;
+            text-align: right;
+        }
+
+        .contact-section {
+            padding-block: 96px;
+            scroll-margin-top: 88px;
+        }
+
+        .contact-card {
+            position: relative;
+            overflow: hidden;
+            padding: clamp(34px, 7vw, 72px);
+            border-radius: var(--radius-lg);
+            background: var(--navy);
+            color: #ffffff;
+            box-shadow: var(--shadow-2);
+        }
+
+        .contact-card::after {
+            position: absolute;
+            right: -120px;
+            bottom: -170px;
+            width: 420px;
+            height: 420px;
+            border-radius: 50%;
+            background: rgba(104, 158, 255, 0.11);
+            content: "";
+        }
+
+        .contact-content {
+            position: relative;
+            z-index: 1;
+            max-width: 760px;
+        }
+
+        .contact-card .section-kicker {
+            color: #a9c8ff;
+        }
+
+        .contact-card h2 {
+            margin-bottom: 18px;
+            font-size: clamp(34px, 5vw, 54px);
+            line-height: 1.14;
+            letter-spacing: -0.025em;
+        }
+
+        .contact-card p {
+            max-width: 650px;
+            margin-bottom: 28px;
+            color: #c7d1e2;
+            font-size: 17px;
+        }
+
+        .contact-card .button-primary {
+            background: #ffffff;
+            color: var(--primary-dark);
+            box-shadow: none;
+        }
+
+        .contact-card .button-outline {
+            border-color: rgba(255, 255, 255, 0.42);
+            background: transparent;
+            color: #ffffff;
+        }
+
+        .contact-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px 24px;
+            margin-top: 26px;
+            color: #c7d1e2;
+            font-size: 14px;
+        }
+
+        .contact-links a:hover {
+            color: #ffffff;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        .site-footer {
+            padding-block: 26px 34px;
+            color: #657187;
+            font-size: 13px;
+        }
+
+        .footer-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        @media (max-width: 1040px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                min-height: auto;
+                gap: 48px;
+                padding-block: 76px;
+            }
+
+            .profile-panel {
+                max-width: 760px;
+            }
+
+            .stat-grid {
+                grid-template-columns: repeat(4, minmax(0, 1fr));
+            }
+
+            .skills-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .credentials {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 940px) {
+            .header-inner {
+                gap: 10px;
+            }
+
+            .site-nav {
+                position: absolute;
+                top: calc(100% + 10px);
+                right: 0;
+                left: 0;
+                display: none;
+                gap: 2px;
+                margin: 0;
+                padding: 10px;
+                border: 1px solid var(--outline);
+                border-radius: var(--radius-md);
+                background: var(--surface);
+                box-shadow: var(--shadow-2);
+            }
+
+            .site-nav[data-open="true"] {
+                display: grid;
+            }
+
+            .site-nav a {
+                padding: 12px 14px;
+                border-radius: var(--radius-sm);
+            }
+
+            .site-nav .track-link {
+                margin-left: 0;
+            }
+
+            .header-resume {
+                margin-left: auto;
+            }
+
+            .menu-toggle {
+                display: inline-flex;
+            }
+
+            .game-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .project-card {
+                grid-template-columns: 1fr;
+            }
+
+            .project-aside {
+                display: grid;
+                grid-template-columns: auto 1fr;
+                align-items: center;
+                gap: 18px;
+            }
+        }
+
+        @media (max-width: 720px) {
+            .shell {
+                width: min(calc(100% - 32px), var(--shell));
+            }
+
+            .section,
+            .contact-section {
+                padding-block: 72px;
+            }
+
+            .header-inner {
+                min-height: 68px;
+            }
+
+            .brand-copy span {
+                display: none;
+            }
+
+            .header-resume {
+                min-height: 40px;
+                padding-inline: 14px;
+            }
+
+            .hero-grid {
+                padding-block: 60px 68px;
+            }
+
+            .availability {
+                align-items: flex-start;
+                border-radius: var(--radius-sm);
+            }
+
+            .availability-dot {
+                margin-top: 5px;
+            }
+
+            h1 {
+                font-size: clamp(38px, 11vw, 54px);
+            }
+
+            .stat-grid,
+            .highlight-grid,
+            .skills-grid,
+            .credentials {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .role {
+                grid-template-columns: 1fr;
+                gap: 22px;
+                padding-block: 30px;
+            }
+
+            .skill-card-wide {
+                grid-column: 1 / -1;
+            }
+
+            .footer-inner {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 540px) {
+            .brand-copy {
+                display: none;
+            }
+
+            .hero-actions .button,
+            .contact-actions .button {
+                width: 100%;
+            }
+
+            .quick-links {
+                display: grid;
+                gap: 10px;
+            }
+
+            .profile-panel {
+                padding: 20px;
+            }
+
+            .stat-grid,
+            .highlight-grid,
+            .skills-grid,
+            .credentials {
+                grid-template-columns: 1fr;
+            }
+
+            .game-card {
+                grid-template-columns: 1fr;
+            }
+
+            .game-media {
+                aspect-ratio: 16 / 9;
+            }
+
+            .game-media img {
+                object-position: center 35%;
+            }
+
+            .contact-card {
+                border-radius: 20px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            *,
+            *::before,
+            *::after {
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        @media print {
+            .site-header,
+            .company-message,
+            .hero-actions,
+            .quick-links,
+            .store-links,
+            .contact-section,
+            .site-footer {
+                display: none !important;
+            }
+
+            .hero,
+            .section {
+                padding-block: 20px;
+                background: #ffffff;
+            }
+
+            .hero-grid,
+            .skills-layout,
+            .project-card {
+                display: block;
+                min-height: auto;
+                padding-block: 0;
+            }
+
+            .profile-panel,
+            .game-card,
+            .highlight-card,
+            .experience-list,
+            .skill-card,
+            .credential-card {
+                box-shadow: none;
+                break-inside: avoid;
+            }
+        }
+    </style>
+
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Person",
+            "name": "Anthony Ege Kopri",
+            "url": "https://anthonykopri.github.io/portfolio/game-developer/",
+            "email": "mailto:anthonyegekopri@gmail.com",
+            "telephone": "+49 176 4578 2871",
+            "jobTitle": "Unity Game Developer",
+            "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Berlin",
+                "addressCountry": "DE"
+            },
+            "sameAs": [
+                "https://www.linkedin.com/in/anthony-kpr",
+                "https://github.com/AnthonyKopri"
+            ],
+            "knowsAbout": [
+                "Unity",
+                "C#",
+                "Gameplay Systems",
+                "Unity Editor Tooling",
+                "Mobile Games",
+                "Rapid Prototyping",
+                "Multiplayer"
+            ]
+        }
+    </script>
+</head>
+
+<body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <header class="site-header">
+        <div class="shell header-inner">
+            <a class="brand" href="#about" aria-label="Anthony Ege Kopri, game developer profile home">
+                <span class="brand-mark" aria-hidden="true">AK</span>
+                <span class="brand-copy">
+                    <strong>Anthony Ege Kopri</strong>
+                    <span>Unity Game Developer</span>
+                </span>
+            </a>
+
+            <nav id="primary-navigation" class="site-nav" aria-label="Primary navigation">
+                <a href="#about">About</a>
+                <a href="#highlights">Highlights</a>
+                <a href="#games">Games</a>
+                <a href="#experience">Experience</a>
+                <a href="#skills">Skills</a>
+                <a href="#contact">Contact</a>
+                <a class="track-link" href="../software-engineer/index.html" data-profile-switch>Software profile</a>
+            </nav>
+
+            <a class="button button-small button-tonal header-resume" href="../docs/Anthony_Ege_Kopri_Game_Developer_Resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
+
+            <button class="menu-toggle" type="button" aria-label="Open navigation" aria-controls="primary-navigation" aria-expanded="false">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"></path></svg>
+            </button>
+        </div>
+    </header>
+
+    <aside id="company-greeting" class="company-message hidden" aria-live="polite">
+        <div class="shell">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16v12H5.17L4 17.17V4Z"></path><path d="M8 8h8M8 12h5"></path></svg>
+            <span id="company-greeting-text"></span>
+        </div>
+    </aside>
+
+    <main id="main-content">
+        <section id="about" class="hero">
+            <div class="shell hero-grid">
+                <div>
+                    <div class="availability">
+                        <span class="availability-dot" aria-hidden="true"></span>
+                        <span>Berlin, Germany &middot; Open to Unity and gameplay engineering opportunities</span>
+                    </div>
+                    <p class="hero-name">Anthony Ege Kopri</p>
+                    <h1>Unity developer taking gameplay from prototype to live product.</h1>
+                    <p class="hero-copy">C# gameplay engineer with 5+ years of experience building <strong>core mechanics, reusable Editor tooling, mobile games, multiplayer systems, and production workflows</strong>&mdash;from rapid concepts through launch and post-launch support.</p>
+                    <div class="hero-actions">
+                        <a class="button button-primary" href="../docs/Anthony_Ege_Kopri_Game_Developer_Resume.pdf" target="_blank" rel="noopener noreferrer">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"></path><path d="M14 2v6h6M8 13h8M8 17h6"></path></svg>
+                            View game developer resume
+                        </a>
+                        <a class="button button-outline" href="#games">View shipped games</a>
+                    </div>
+                    <div class="quick-links" aria-label="Contact links">
+                        <a href="mailto:anthonyegekopri@gmail.com">anthonyegekopri@gmail.com</a>
+                        <a href="tel:+4917645782871">+49 176 4578 2871</a>
+                        <a href="https://www.linkedin.com/in/anthony-kpr" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                        <a href="https://github.com/AnthonyKopri" target="_blank" rel="noopener noreferrer">GitHub</a>
+                    </div>
+                </div>
+
+                <aside class="profile-panel" aria-labelledby="at-a-glance-title">
+                    <p id="at-a-glance-title" class="eyebrow">Career highlights</p>
+                    <div class="stat-grid">
+                        <div class="stat-card"><strong>100M+</strong><span>publisher/store-reported downloads</span></div>
+                        <div class="stat-card"><strong>#1</strong><span>U.S. App Store free games with Arrow Fest</span></div>
+                        <div class="stat-card"><strong>~100</strong><span>rapid Unity prototypes</span></div>
+                        <div class="stat-card"><strong>4</strong><span>released mobile titles</span></div>
+                    </div>
+                    <div class="focus-block">
+                        <h2>Core focus</h2>
+                        <div class="chip-list">
+                            <span class="chip">C#</span>
+                            <span class="chip">Gameplay systems</span>
+                            <span class="chip">Editor tooling</span>
+                            <span class="chip">Mobile production</span>
+                            <span class="chip">Rapid prototyping</span>
+                            <span class="chip">Multiplayer</span>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </section>
+
+        <section id="highlights" class="section">
+            <div class="shell">
+                <div class="section-heading">
+                    <p class="section-kicker">What I bring to a game team</p>
+                    <h2>Gameplay ownership supported by reusable production systems</h2>
+                </div>
+                <div class="highlight-grid">
+                    <article class="highlight-card">
+                        <div class="highlight-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"></path><path d="M8 8h8v3H8zM8 15h3M14 15h2"></path></svg>
+                        </div>
+                        <h3>Authoring framework &amp; Editor tools</h3>
+                        <p>Sole creator and maintainer of a documented Unity authoring framework adopted across two launched games and about 12 prototypes, using ScriptableObjects, custom inspectors, attributes, EditorWindows, serialization, and JSON-backed configuration.</p>
+                    </article>
+                    <article class="highlight-card">
+                        <div class="highlight-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m8 5 11 7-11 7V5Z"></path><path d="M5 5v14"></path></svg>
+                        </div>
+                        <h3>Prototype-to-launch delivery</h3>
+                        <p>Hands-on ownership across rapid prototyping, representative levels, core gameplay, A/B tests, optimization, SDK integrations, Android/iOS releases, and live maintenance with small production teams.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="games" class="section section-alt">
+            <div class="shell">
+                <div class="section-heading">
+                    <p class="section-kicker">Selected shipped games</p>
+                    <h2>Four released titles with clearly owned contributions</h2>
+                    <p class="section-intro">Together, these games have more than 100M publisher/store-reported downloads.</p>
+                </div>
+
+                <div class="game-grid">
+                    <article class="game-card">
+                        <div class="game-media"><img src="../img/arrowfest.webp" width="528" height="704" alt="Arrow Fest mobile game artwork" loading="eager" decoding="async"></div>
+                        <div class="game-content">
+                            <h3>Arrow Fest</h3>
+                            <p>Owned movement, gates, spline-based level generation, shop, level editor, cosmetics, and experimental in-world advertising. The title reached #1 among free games in the U.S. App Store.</p>
+                            <div class="store-links" aria-label="Arrow Fest store links">
+                                <a href="https://apps.apple.com/us/app/arrow-fest/id1569353501" target="_blank" rel="noopener noreferrer">App Store <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"></path></svg></a>
+                                <a href="https://play.google.com/store/apps/details?id=com.nanotribe.games.arrowfest" target="_blank" rel="noopener noreferrer">Google Play <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"></path></svg></a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="game-card">
+                        <div class="game-media"><img src="../img/tangledsnakes.webp" width="900" height="1440" alt="Tangled Snakes mobile game artwork" loading="lazy" decoding="async"></div>
+                        <div class="game-content">
+                            <h3>Tangled Snakes</h3>
+                            <p>Served as sole Unity developer from prototype through launch and as primary maintainer post-launch.</p>
+                            <div class="store-links" aria-label="Tangled Snakes store links">
+                                <a href="https://apps.apple.com/us/app/tangled-snakes/id1665914232" target="_blank" rel="noopener noreferrer">App Store <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"></path></svg></a>
+                                <a href="https://play.google.com/store/apps/details?id=com.nt.games.tangledsnakes" target="_blank" rel="noopener noreferrer">Google Play <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"></path></svg></a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="game-card">
+                        <div class="game-media"><img src="../img/busjam.webp" width="810" height="1440" alt="Bus Jam mobile game artwork" loading="lazy" decoding="async"></div>
+                        <div class="game-content">
+                            <h3>Bus Jam</h3>
+                            <p>Delivered the game from prototype through launch before sharing post-launch ownership. Replaced realtime shadow casting with lightweight faux shadows to resolve object-dense performance bottlenecks.</p>
+                            <div class="store-links" aria-label="Bus Jam store links">
+                                <a href="https://apps.apple.com/us/app/bus-jam/id6450176534" target="_blank" rel="noopener noreferrer">App Store <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"></path></svg></a>
+                                <a href="https://play.google.com/store/apps/details?id=com.nt.games.busjam" target="_blank" rel="noopener noreferrer">Google Play <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"></path></svg></a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="game-card">
+                        <div class="game-media"><img src="../img/cashier3d.webp" width="1079" height="1440" alt="Cashier 3D mobile game artwork" loading="lazy" decoding="async"></div>
+                        <div class="game-content">
+                            <h3>Cashier 3D</h3>
+                            <p>Delivered post-launch meta progression for purchasing and constructing buildings.</p>
+                            <div class="store-links" aria-label="Cashier 3D store links">
+                                <a href="https://apps.apple.com/us/app/cashier-3d/id1519029260" target="_blank" rel="noopener noreferrer">App Store <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"></path></svg></a>
+                                <a href="https://play.google.com/store/apps/details?id=com.nanotribe.games.cashier3d" target="_blank" rel="noopener noreferrer">Google Play <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"></path></svg></a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience" class="section">
+            <div class="shell">
+                <div class="section-heading">
+                    <p class="section-kicker">Professional experience</p>
+                    <h2>High-throughput game development, tooling, and product delivery</h2>
+                </div>
+
+                <div class="experience-list">
+                    <article class="role">
+                        <header>
+                            <h3>Software &amp; Automation Developer <span aria-label="part-time">(Part-time)</span></h3>
+                            <p class="company">Familiara GmbH</p>
+                            <p class="role-meta">Berlin, Germany<br>May 2026 &ndash; Present</p>
+                        </header>
+                        <ul>
+                            <li>Completed core functionality for a near-launch website overhaul while continuing to iterate frontend design, forms, API integrations, and internal workflows.</li>
+                            <li>Translate operational requirements into maintainable software and version-controlled automation for a care-support business.</li>
+                        </ul>
+                    </article>
+
+                    <article class="role">
+                        <header>
+                            <h3>Co-Founder &amp; Senior Unity Developer</h3>
+                            <p class="company">Rocket Tuna Games</p>
+                            <p class="role-meta">Romania / Remote<br>Apr 2025 &ndash; Sep 2025</p>
+                        </header>
+                        <ul>
+                            <li>Co-founded a four-person game studio under a formal Voodoo publishing agreement and served as one of two Unity developers.</li>
+                            <li>Built C#/Unity gameplay concepts and rapid prototypes together with reusable foundations, Editor tools, custom plugins, templates, and production workflows.</li>
+                            <li>Partnered with game design, 3D art, a fellow developer, and the publisher to scope technical approaches, debug prototypes, and communicate feasibility, risks, and delivery trade-offs.</li>
+                        </ul>
+                    </article>
+
+                    <article class="role">
+                        <header>
+                            <h3>Unity Developer</h3>
+                            <p class="company">NanoTribe GmbH <span style="font-weight: 400;">(acquired by Rollic/Zynga)</span></p>
+                            <p class="role-meta">Berlin, Germany<br>Feb 2021 &ndash; Mar 2025</p>
+                        </header>
+                        <ul>
+                            <li>Engineered roughly 100 rapid Unity prototypes in a high-throughput publishing environment, typically as the sole developer partnering with artists to create testable builds and representative levels.</li>
+                            <li>Solely designed, documented, and maintained a reusable Unity authoring framework adopted across two launched games and about 12 prototypes.</li>
+                            <li>Unified per-prototype grid editors into a reusable content workflow and established coding, architecture, and design conventions for shared development.</li>
+                            <li>Owned gameplay and launch responsibilities across Arrow Fest, Cashier 3D, Tangled Snakes, and Bus Jam, then supported A/B tests, optimization, SDK integrations, and live releases.</li>
+                        </ul>
+                    </article>
+
+                    <article class="role">
+                        <header>
+                            <h3>Freelance Game Developer</h3>
+                            <p class="company">ValhallaVerse</p>
+                            <p class="role-meta">Remote &middot; Concurrent engagement<br>Dec 2021 &ndash; Nov 2022</p>
+                        </header>
+                        <ul>
+                            <li>Worked as one of four developers on an approximately 30-person team, implementing Unity WebGL lobbies, matchmaking, and state synchronization with Mirror and Photon.</li>
+                            <li>Supported repeated concept and genre changes through C# gameplay development, API integration, custom tooling, testing, debugging, and technical iteration.</li>
+                        </ul>
+                    </article>
+
+                    <article class="role">
+                        <header>
+                            <h3>Junior Software Developer</h3>
+                            <p class="company">Besh Bilişim Donanım ve İnternet Hizmetleri</p>
+                            <p class="role-meta">Izmir, Turkey<br>Aug 2019 &ndash; Aug 2020</p>
+                        </header>
+                        <ul>
+                            <li>Built a Java application for an assistive Braille-device prototype, integrating document workflows with mechanical Braille cells and physical controls.</li>
+                            <li>Also contributed to a Unity/C# prototype and JavaScript/HTML/CSS website updates.</li>
+                        </ul>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="open-source" class="section section-alt">
+            <div class="shell">
+                <div class="section-heading">
+                    <p class="section-kicker">Selected open-source project</p>
+                    <h2>Engineering beyond the Unity runtime</h2>
+                </div>
+                <article class="project-card">
+                    <div class="project-body">
+                        <h3>Multi-Git Client</h3>
+                        <p class="project-stack">TypeScript &middot; Electron &middot; Node.js &middot; Express</p>
+                        <ul>
+                            <li>Created and released an MIT-licensed Windows Git client for multi-repository workflows, per-repository SSH identities, precision staging, visual history, conflict resolution, worktrees, and recovery safeguards.</li>
+                            <li>Delivered strict type checking, unit and integration tests, Windows installer and portable builds, and GitHub Actions CI.</li>
+                        </ul>
+                        <a class="button button-primary" href="https://github.com/AnthonyKopri/multi-git" target="_blank" rel="noopener noreferrer">View repository</a>
+                    </div>
+                    <aside class="project-aside" aria-label="Multi-Git project summary">
+                        <strong>MIT</strong>
+                        <span>open-source Windows desktop application</span>
+                    </aside>
+                </article>
+            </div>
+        </section>
+
+        <section id="skills" class="section">
+            <div class="shell">
+                <div class="section-heading">
+                    <p class="section-kicker">Technical profile</p>
+                    <h2>Unity production skills backed by software engineering fundamentals</h2>
+                </div>
+
+                <div class="skills-layout">
+                    <div class="skills-grid">
+                        <article class="skill-card">
+                            <h3>Languages</h3>
+                            <div class="chip-list">
+                                <span class="chip">C# (primary)</span><span class="chip">C++</span><span class="chip">C</span><span class="chip">Java</span><span class="chip">Python</span><span class="chip">JavaScript</span><span class="chip">TypeScript</span><span class="chip">HTML/CSS</span>
+                            </div>
+                        </article>
+
+                        <article class="skill-card">
+                            <h3>Unity &amp; gameplay</h3>
+                            <div class="chip-list">
+                                <span class="chip">Gameplay systems</span><span class="chip">Rapid prototyping</span><span class="chip">Mobile games</span><span class="chip">Level generation</span><span class="chip">Spline systems</span><span class="chip">Progression &amp; economy</span><span class="chip">Cosmetics</span><span class="chip">Live operations</span>
+                            </div>
+                        </article>
+
+                        <article class="skill-card">
+                            <h3>Editor tooling</h3>
+                            <p>Unity Editor scripting, custom EditorWindows and inspectors, ScriptableObjects, custom attributes, serialization, JSON configuration, and level/content authoring.</p>
+                        </article>
+
+                        <article class="skill-card">
+                            <h3>Architecture &amp; networking</h3>
+                            <p>OOP, SOLID, composition, dependency injection, Zenject, UniRx, Model-View-Presenter, Mirror, Photon, lobbies, matchmaking, and state synchronization.</p>
+                        </article>
+
+                        <article class="skill-card skill-card-wide">
+                            <h3>Production &amp; delivery</h3>
+                            <div class="chip-list">
+                                <span class="chip">Android</span><span class="chip">iOS</span><span class="chip">WebGL</span><span class="chip">Git &amp; GitHub</span><span class="chip">CI/CD</span><span class="chip">Play Console</span><span class="chip">TestFlight</span><span class="chip">Analytics/ads/attribution SDKs</span><span class="chip">A/B testing</span><span class="chip">Debugging</span><span class="chip">Optimization</span><span class="chip">Refactoring</span>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="credentials">
+                        <article class="credential-card">
+                            <p class="eyebrow">Education</p>
+                            <h3>BSc, Computer Science</h3>
+                            <p class="institution">Dokuz Eylül University</p>
+                            <p>Izmir, Turkey &middot; Jun 2018 &ndash; Jun 2022</p>
+                            <div class="credential-details">
+                                <span>GPA: 3.33 / 4.00</span>
+                                <span>Capstone: Synesthesia &ndash; Generative Adversarial Network</span>
+                            </div>
+                        </article>
+
+                        <article class="credential-card">
+                            <p class="eyebrow">Languages</p>
+                            <dl class="language-list">
+                                <div><dt>Turkish</dt><dd>Native</dd></div>
+                                <div><dt>English</dt><dd>Fluent</dd></div>
+                                <div><dt>German</dt><dd>A2, actively learning</dd></div>
+                            </dl>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact-section">
+            <div class="shell contact-card">
+                <div class="contact-content">
+                    <p class="section-kicker">Get in touch</p>
+                    <h2>Building a game that needs strong gameplay ownership and better tools?</h2>
+                    <p>I am open to Unity and gameplay engineering opportunities in Berlin and remote-friendly teams, from rapid product development to deeper systems and Editor tooling work.</p>
+                    <div class="contact-actions">
+                        <a class="button button-primary" href="mailto:anthonyegekopri@gmail.com">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 5h16v14H4z"></path><path d="m4 7 8 6 8-6"></path></svg>
+                            Email Anthony
+                        </a>
+                        <a class="button button-outline" href="tel:+4917645782871">Call</a>
+                    </div>
+                    <div class="contact-links">
+                        <a href="https://www.linkedin.com/in/anthony-kpr" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                        <a href="https://github.com/AnthonyKopri" target="_blank" rel="noopener noreferrer">GitHub</a>
+                        <a href="../docs/Anthony_Ege_Kopri_Game_Developer_Resume.pdf" target="_blank" rel="noopener noreferrer">Game developer resume</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="shell footer-inner">
+            <span>&copy; <span id="current-year">2026</span> Anthony Ege Kopri &middot; Berlin, Germany</span>
+            <div class="footer-links">
+                <a href="#about">Back to top</a>
+                <a href="../software-engineer/index.html" data-profile-switch>Software engineer profile</a>
+                <a href="mailto:anthonyegekopri@gmail.com">Email</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const menuButton = document.querySelector('.menu-toggle');
+        const navigation = document.getElementById('primary-navigation');
+
+        function setMenu(open) {
+            if (!menuButton || !navigation) return;
+            navigation.dataset.open = String(open);
+            menuButton.setAttribute('aria-expanded', String(open));
+            menuButton.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
+            document.body.classList.toggle('menu-open', open && window.innerWidth <= 940);
+        }
+
+        if (menuButton && navigation) {
+            menuButton.addEventListener('click', () => setMenu(menuButton.getAttribute('aria-expanded') !== 'true'));
+            navigation.addEventListener('click', (event) => {
+                if (event.target.closest('a')) setMenu(false);
+            });
+            document.addEventListener('keydown', (event) => {
+                if (event.key === 'Escape') setMenu(false);
+            });
+            window.addEventListener('resize', () => {
+                if (window.innerWidth > 940) setMenu(false);
+            });
+        }
+
+        const companyName = new URLSearchParams(window.location.search).get('company')?.trim();
+        if (companyName) {
+            const greeting = document.getElementById('company-greeting');
+            const greetingText = document.getElementById('company-greeting-text');
+            greetingText.textContent = `Welcome, ${companyName} team. Thank you for taking the time to review my game development work.`;
+            greeting.classList.remove('hidden');
+
+            document.querySelectorAll('[data-profile-switch]').forEach((link) => {
+                const destination = new URL(link.href);
+                destination.searchParams.set('company', companyName);
+                link.href = destination.toString();
+            });
+        }
+
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
