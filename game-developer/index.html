@@ -16,6 +16,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&display=swap" rel="stylesheet">
     <title>Anthony Ege Kopri | Unity Game Developer</title>
 
+    <script>
+        (() => {
+            let savedTheme = null;
+            try {
+                savedTheme = localStorage.getItem('portfolio-theme');
+            } catch {}
+            const preferredTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+            document.documentElement.dataset.theme = savedTheme === 'dark' || savedTheme === 'light' ? savedTheme : preferredTheme;
+        })();
+    </script>
+
     <style>
         :root {
             color-scheme: light;
@@ -32,12 +43,47 @@
             --outline-strong: #bdc8d8;
             --navy: #13233d;
             --success: #18794e;
+            --gpa-container: #dcfce7;
+            --gpa-ink: #166534;
+            --turkish-container: #dff7ee;
+            --turkish-ink: #0f6b52;
+            --english-container: #eee8ff;
+            --english-ink: #5b35a8;
+            --german-container: #fff2cc;
+            --german-ink: #805b00;
             --shadow-1: 0 1px 3px rgba(21, 36, 60, 0.09);
             --shadow-2: 0 12px 34px rgba(21, 36, 60, 0.11);
             --radius-sm: 10px;
             --radius-md: 16px;
             --radius-lg: 24px;
             --shell: 1160px;
+        }
+
+        html[data-theme="dark"] {
+            color-scheme: dark;
+            --primary: #8ab4f8;
+            --primary-dark: #aecbfa;
+            --primary-container: #203a5e;
+            --primary-ink: #d9e7ff;
+            --ink: #edf3ff;
+            --ink-soft: #afbdd0;
+            --surface: #101722;
+            --surface-alt: #151e2c;
+            --surface-strong: #1c2838;
+            --outline: #314156;
+            --outline-strong: #52647d;
+            --navy: #0a111c;
+            --success: #70d6a5;
+            --gpa-container: #163c2b;
+            --gpa-ink: #91e6b9;
+            --turkish-container: #173c35;
+            --turkish-ink: #87dfc4;
+            --english-container: #332951;
+            --english-ink: #cfb9ff;
+            --german-container: #473818;
+            --german-ink: #ffd978;
+            --shadow-1: 0 1px 3px rgba(0, 0, 0, 0.28);
+            --shadow-2: 0 14px 36px rgba(0, 0, 0, 0.34);
         }
 
         *,
@@ -216,6 +262,40 @@
         .menu-toggle svg {
             width: 22px;
             height: 22px;
+        }
+
+        .theme-toggle {
+            display: inline-flex;
+            width: 44px;
+            height: 44px;
+            flex: 0 0 auto;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--outline);
+            border-radius: 50%;
+            background: var(--surface);
+            color: var(--ink);
+            cursor: pointer;
+            transition: border-color 150ms ease, color 150ms ease, background 150ms ease;
+        }
+
+        .theme-toggle:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        .theme-toggle svg {
+            width: 21px;
+            height: 21px;
+        }
+
+        .theme-toggle .sun-icon,
+        html[data-theme="dark"] .theme-toggle .moon-icon {
+            display: none;
+        }
+
+        html[data-theme="dark"] .theme-toggle .sun-icon {
+            display: block;
         }
 
         .button {
@@ -804,6 +884,27 @@
             font-size: 14px;
         }
 
+        .gpa-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            width: fit-content;
+            padding: 7px 11px;
+            border-radius: 999px;
+            background: var(--gpa-container);
+            color: var(--gpa-ink);
+            font-weight: 700;
+        }
+
+        .gpa-badge::before {
+            content: "★";
+            font-size: 13px;
+        }
+
+        .capstone-detail {
+            color: var(--ink-soft);
+        }
+
         .language-list {
             display: grid;
             gap: 11px;
@@ -814,6 +915,9 @@
             display: flex;
             justify-content: space-between;
             gap: 16px;
+            padding: 9px 11px;
+            border-left: 3px solid transparent;
+            border-radius: 10px;
         }
 
         .language-list dt {
@@ -822,9 +926,43 @@
 
         .language-list dd {
             margin: 0;
-            color: var(--ink-soft);
             font-size: 14px;
             text-align: right;
+        }
+
+        .language-level {
+            display: inline-flex;
+            padding: 4px 9px;
+            border-radius: 999px;
+            font-weight: 700;
+            line-height: 1.25;
+        }
+
+        .language-turkish {
+            border-left-color: var(--turkish-ink) !important;
+            background: var(--turkish-container);
+        }
+
+        .language-turkish .language-level {
+            color: var(--turkish-ink);
+        }
+
+        .language-english {
+            border-left-color: var(--english-ink) !important;
+            background: var(--english-container);
+        }
+
+        .language-english .language-level {
+            color: var(--english-ink);
+        }
+
+        .language-german {
+            border-left-color: var(--german-ink) !important;
+            background: var(--german-container);
+        }
+
+        .language-german .language-level {
+            color: var(--german-ink);
         }
 
         .contact-section {
@@ -925,6 +1063,101 @@
 
         .footer-links a:hover {
             color: var(--primary);
+        }
+
+        html[data-theme="dark"] .site-header {
+            border-color: var(--outline);
+            background: rgba(16, 23, 34, 0.94);
+        }
+
+        html[data-theme="dark"] .brand-mark {
+            background: #4f83cf;
+            color: #ffffff;
+        }
+
+        html[data-theme="dark"] .brand-copy span,
+        html[data-theme="dark"] .site-nav a,
+        html[data-theme="dark"] .availability,
+        html[data-theme="dark"] .hero-copy,
+        html[data-theme="dark"] .section-intro,
+        html[data-theme="dark"] .project-lead,
+        html[data-theme="dark"] .game-content p,
+        html[data-theme="dark"] .role-meta,
+        html[data-theme="dark"] .role li,
+        html[data-theme="dark"] .impact-list li,
+        html[data-theme="dark"] .project-card li,
+        html[data-theme="dark"] .skill-card p,
+        html[data-theme="dark"] .credential-card p,
+        html[data-theme="dark"] .credential-details,
+        html[data-theme="dark"] .site-footer {
+            color: var(--ink-soft);
+        }
+
+        html[data-theme="dark"] .company-message {
+            border-color: #31527c;
+            background: #162842;
+        }
+
+        html[data-theme="dark"] .company-message .shell {
+            color: #c8dcfa;
+        }
+
+        html[data-theme="dark"] .hero {
+            border-color: var(--outline);
+            background:
+                radial-gradient(circle at 88% 12%, rgba(91, 140, 220, 0.17), transparent 30%),
+                linear-gradient(180deg, #151f2f 0%, var(--surface) 90%);
+        }
+
+        html[data-theme="dark"] .availability,
+        html[data-theme="dark"] .profile-panel {
+            border-color: var(--outline);
+            background: rgba(21, 30, 44, 0.94);
+        }
+
+        html[data-theme="dark"] .stat-card {
+            background: #1a2535;
+        }
+
+        html[data-theme="dark"] .stat-card span {
+            color: var(--ink-soft);
+        }
+
+        html[data-theme="dark"] .chip {
+            border-color: var(--outline);
+            background: #1a2535;
+            color: #c8d4e6;
+        }
+
+        html[data-theme="dark"] .section-alt {
+            border-color: var(--outline);
+        }
+
+        html[data-theme="dark"] .button-primary {
+            background: var(--primary);
+            color: #0a294f;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.25);
+        }
+
+        html[data-theme="dark"] .button-primary:hover {
+            background: var(--primary-hover, var(--primary-dark));
+        }
+
+        html[data-theme="dark"] .button-outline:hover {
+            background: var(--surface-alt);
+        }
+
+        html[data-theme="dark"] .contact-card .button-primary {
+            background: #f2f6ff;
+            color: #123563;
+        }
+
+        html[data-theme="dark"] .contact-card .button-primary:hover {
+            background: #dfeaff;
+        }
+
+        html[data-theme="dark"] .contact-card .button-outline:hover {
+            background: rgba(255, 255, 255, 0.08);
         }
 
         @media (max-width: 1040px) {
@@ -1220,6 +1453,11 @@
 
             <a class="button button-small button-tonal header-resume" href="../docs/Anthony_Ege_Kopri_Game_Developer_Resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
 
+            <button class="theme-toggle" type="button" aria-label="Switch to dark mode" title="Switch color theme">
+                <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"></path></svg>
+                <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.66 6.34l1.41-1.41"></path></svg>
+            </button>
+
             <button class="menu-toggle" type="button" aria-label="Open navigation" aria-controls="primary-navigation" aria-expanded="false">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"></path></svg>
             </button>
@@ -1513,17 +1751,17 @@
                             <p class="institution">Dokuz Eylül University</p>
                             <p>Izmir, Turkey &middot; Jun 2018 &ndash; Jun 2022</p>
                             <div class="credential-details">
-                                <span>GPA: 3.33 / 4.00</span>
-                                <span>Capstone: Synesthesia &ndash; Generative Adversarial Network</span>
+                                <span class="gpa-badge">Strong GPA: 3.33 / 4.00</span>
+                                <span class="capstone-detail">Capstone: Synesthesia &ndash; Generative Adversarial Network</span>
                             </div>
                         </article>
 
                         <article class="credential-card">
                             <p class="eyebrow">Languages</p>
                             <dl class="language-list">
-                                <div><dt>Turkish</dt><dd>Native</dd></div>
-                                <div><dt>English</dt><dd>Fluent</dd></div>
-                                <div><dt>German</dt><dd>A2, actively learning</dd></div>
+                                <div class="language-turkish"><dt>Turkish</dt><dd><span class="language-level">Native</span></dd></div>
+                                <div class="language-english"><dt>English</dt><dd><span class="language-level">Bilingual</span></dd></div>
+                                <div class="language-german"><dt>German</dt><dd><span class="language-level">A2 &middot; Actively learning</span></dd></div>
                             </dl>
                         </article>
                     </div>
@@ -1566,6 +1804,25 @@
     </footer>
 
     <script>
+        const themeToggle = document.querySelector('.theme-toggle');
+
+        function updateThemeControl() {
+            const isDark = document.documentElement.dataset.theme === 'dark';
+            themeToggle.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', isDark ? '#101722' : '#f8fafc');
+        }
+
+        themeToggle.addEventListener('click', () => {
+            const nextTheme = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+            document.documentElement.dataset.theme = nextTheme;
+            try {
+                localStorage.setItem('portfolio-theme', nextTheme);
+            } catch {}
+            updateThemeControl();
+        });
+
+        updateThemeControl();
+
         const menuButton = document.querySelector('.menu-toggle');
         const navigation = document.getElementById('primary-navigation');
 

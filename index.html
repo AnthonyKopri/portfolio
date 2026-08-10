@@ -12,12 +12,27 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&display=swap" rel="stylesheet">
     <title>Anthony Ege Kopri | Portfolio</title>
 
+    <script>
+        (() => {
+            let savedTheme = null;
+            try {
+                savedTheme = localStorage.getItem('portfolio-theme');
+            } catch {}
+            const preferredTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+            document.documentElement.dataset.theme = savedTheme === 'dark' || savedTheme === 'light' ? savedTheme : preferredTheme;
+        })();
+    </script>
+
     <style>
         :root {
             color-scheme: light;
             --primary: #0b57d0;
             --primary-dark: #0842a0;
             --primary-container: #dbe8ff;
+            --secondary: #6d28d9;
+            --secondary-dark: #5b21b6;
+            --secondary-container: #ede9fe;
+            --secondary-ink: #5b21b6;
             --ink: #172033;
             --ink-soft: #526078;
             --surface: #ffffff;
@@ -25,6 +40,24 @@
             --outline: #d8e0eb;
             --navy: #13233d;
             --shadow: 0 14px 40px rgba(21, 36, 60, 0.11);
+        }
+
+        html[data-theme="dark"] {
+            color-scheme: dark;
+            --primary: #8ab4f8;
+            --primary-dark: #aecbfa;
+            --primary-container: #1f3a5f;
+            --secondary: #c4a7ff;
+            --secondary-dark: #d8c4ff;
+            --secondary-container: #39275f;
+            --secondary-ink: #eadfff;
+            --ink: #edf3ff;
+            --ink-soft: #afbdd0;
+            --surface: #111925;
+            --surface-alt: #172130;
+            --outline: #34445a;
+            --navy: #09111c;
+            --shadow: 0 16px 42px rgba(0, 0, 0, 0.34);
         }
 
         *,
@@ -50,6 +83,12 @@
             -webkit-font-smoothing: antialiased;
         }
 
+        html[data-theme="dark"] body {
+            background:
+                radial-gradient(circle at 82% 10%, rgba(91, 140, 220, 0.16), transparent 30%),
+                linear-gradient(180deg, #131d2b 0%, #0e1621 88%);
+        }
+
         a {
             color: inherit;
             text-decoration: none;
@@ -58,6 +97,43 @@
         :focus-visible {
             outline: 3px solid rgba(11, 87, 208, 0.38);
             outline-offset: 4px;
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 20;
+            display: inline-flex;
+            width: 44px;
+            height: 44px;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--outline);
+            border-radius: 50%;
+            background: var(--surface);
+            color: var(--ink);
+            box-shadow: 0 4px 14px rgba(21, 36, 60, 0.10);
+            cursor: pointer;
+        }
+
+        .theme-toggle:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        .theme-toggle svg {
+            width: 21px;
+            height: 21px;
+        }
+
+        .theme-toggle .sun-icon,
+        html[data-theme="dark"] .theme-toggle .moon-icon {
+            display: none;
+        }
+
+        html[data-theme="dark"] .theme-toggle .sun-icon {
+            display: block;
         }
 
         .page {
@@ -206,6 +282,19 @@
             background: var(--primary-dark);
         }
 
+        .choice-game .choice-label {
+            background: var(--secondary-container);
+            color: var(--secondary-ink);
+        }
+
+        .choice-game .choice-action {
+            background: var(--secondary);
+        }
+
+        .choice-game:hover .choice-action {
+            background: var(--secondary-dark);
+        }
+
         .choice-action svg {
             width: 17px;
             height: 17px;
@@ -224,6 +313,35 @@
             color: var(--primary);
             text-decoration: underline;
             text-underline-offset: 3px;
+        }
+
+        html[data-theme="dark"] .chooser,
+        html[data-theme="dark"] .choice {
+            background: rgba(17, 25, 37, 0.96);
+        }
+
+        html[data-theme="dark"] .choice {
+            background: #172130;
+        }
+
+        html[data-theme="dark"] .choice-action {
+            color: #0b274d;
+        }
+
+        html[data-theme="dark"] .monogram {
+            background: #4f83cf;
+        }
+
+        html[data-theme="dark"] .choice-software .choice-label {
+            color: #d9e7ff;
+        }
+
+        html[data-theme="dark"] .choice-game .choice-action {
+            color: #281547;
+        }
+
+        html[data-theme="dark"] .profile-links {
+            color: var(--ink-soft);
         }
 
         @media (max-width: 700px) {
@@ -255,6 +373,11 @@
 </head>
 
 <body>
+    <button class="theme-toggle" type="button" aria-label="Switch to dark mode" title="Switch color theme">
+        <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"></path></svg>
+        <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.66 6.34l1.41-1.41"></path></svg>
+    </button>
+
     <main class="page">
         <section class="identity" aria-labelledby="page-title">
             <div class="monogram" aria-hidden="true">AK</div>
@@ -268,7 +391,7 @@
             <h2 id="chooser-title" style="margin: 0 0 8px; font-size: 20px;">Choose the profile relevant to your role</h2>
             <p>Each version highlights the experience, projects, and résumé most useful for that hiring track.</p>
             <div class="choices">
-                <a class="choice" href="software-engineer/index.html" data-track-link>
+                <a class="choice choice-software" href="software-engineer/index.html" data-track-link>
                     <span class="choice-label">Applications &amp; tools</span>
                     <h2>Software engineering</h2>
                     <p>C#, TypeScript, developer tools, desktop and web applications, APIs, testing, automation, and delivery.</p>
@@ -278,7 +401,7 @@
                     </span>
                 </a>
 
-                <a class="choice" href="game-developer/index.html" data-track-link>
+                <a class="choice choice-game" href="game-developer/index.html" data-track-link>
                     <span class="choice-label">Unity &amp; gameplay</span>
                     <h2>Game development</h2>
                     <p>Unity, C#, gameplay systems, Editor tooling, mobile production, rapid prototyping, multiplayer, and live products.</p>
@@ -299,6 +422,25 @@
     </main>
 
     <script>
+        const themeToggle = document.querySelector('.theme-toggle');
+
+        function updateThemeControl() {
+            const isDark = document.documentElement.dataset.theme === 'dark';
+            themeToggle.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', isDark ? '#111925' : '#f7f9fc');
+        }
+
+        themeToggle.addEventListener('click', () => {
+            const nextTheme = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+            document.documentElement.dataset.theme = nextTheme;
+            try {
+                localStorage.setItem('portfolio-theme', nextTheme);
+            } catch {}
+            updateThemeControl();
+        });
+
+        updateThemeControl();
+
         const companyName = new URLSearchParams(window.location.search).get('company')?.trim();
         if (companyName) {
             const welcome = document.getElementById('company-welcome');
